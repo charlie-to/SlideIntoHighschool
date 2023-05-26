@@ -6,8 +6,10 @@ import java.awt.*;
 
 public class MainMenu{
     JFrame frame;
+    private static boolean isInstruction;
     public MainMenu(JFrame frame){
         this.frame = frame;
+        isInstruction = false;
 
         // Clear the frame
         Container contentPane = frame.getContentPane();
@@ -58,5 +60,14 @@ public class MainMenu{
                 i.run();
             }
         });
+    }
+
+    public static boolean getIsInstruction(){
+        return isInstruction;
+    }
+
+    public static void setIsInstruction(boolean onInstruction)
+    {
+        isInstruction = onInstruction;
     }
 }

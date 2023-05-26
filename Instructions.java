@@ -13,6 +13,8 @@ public class Instructions {
         contentPane.removeAll();
         this.frame.revalidate();
         this.frame.repaint();
+
+        MainMenu.setIsInstruction(true);
     }
 
     public void run() {
@@ -24,12 +26,16 @@ public class Instructions {
 
         exit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                MainMenu.setIsInstruction(false);
                 System.out.println("exit clicked");
                 MainMenu ex = new MainMenu(frame);
                 ex.run();
             }
         });
     }
+
+    
+    
 
     class Drawing extends JComponent {
         public void paint(Graphics g) {
