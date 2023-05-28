@@ -1,6 +1,5 @@
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class Instructions {
@@ -33,9 +32,6 @@ public class Instructions {
             }
         });
     }
-
-    
-    
 
     class Drawing extends JComponent {
         public void paint(Graphics g) {

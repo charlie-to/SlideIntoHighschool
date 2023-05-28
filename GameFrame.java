@@ -13,8 +13,38 @@ public class GameFrame extends JFrame implements KeyListener
 
     @Override
     public void keyTyped(KeyEvent e) {
-        if(e.getKeyChar() == 'h' && MainMenu.getIsInstruction()){
-            System.out.println("x");
+        if(e.getKeyChar()== 'e' && MainMenu.getIsInstruction()){
+            MainMenu ex = new MainMenu(this);
+            ex.run();
+        }
+        if (e.getKeyChar() == 'w' && MainMenu.getIsLock()){
+            if (Lock.degrees == 360)
+                Lock.degrees = 45;
+            else
+                Lock.degrees += 45;
+            Lock.turns.add("up");
+            Lock l = new Lock(this);
+            l.run();
+            if (l.checkWinner()){
+                MainMenu.setIsLock(false);
+                MainMenu ex = new MainMenu(this);
+                ex.run();
+            }
+        }
+        if (e.getKeyChar() == 's' && MainMenu.getIsLock()){
+            if (Lock.degrees == 0)
+                Lock.degrees = 315;
+            else
+                Lock.degrees -= 45;
+            Lock.turns.add("down");
+            Lock l = new Lock(this);
+            // System.out.println(Lock.degrees);
+            l.run();
+            if (l.checkWinner()){
+                MainMenu.setIsLock(false);
+                MainMenu ex = new MainMenu(this);
+                ex.run();
+            }
         }
     }
 

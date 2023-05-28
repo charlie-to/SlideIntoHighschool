@@ -7,6 +7,8 @@ import java.awt.*;
 public class MainMenu{
     JFrame frame;
     private static boolean isInstruction;
+    private static boolean isLock;
+
     public MainMenu(JFrame frame){
         this.frame = frame;
         isInstruction = false;
@@ -60,14 +62,26 @@ public class MainMenu{
                 i.run();
             }
         });
+        exit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("exit clicked");
+                Lock l = new Lock(frame);
+                l.run();
+            }
+        });
     }
 
     public static boolean getIsInstruction(){
         return isInstruction;
     }
-
     public static void setIsInstruction(boolean onInstruction)
     {
         isInstruction = onInstruction;
+    }
+    public static boolean getIsLock(){
+        return isLock;
+    }
+    public static void setIsLock(boolean onLock){
+        isLock = onLock;
     }
 }

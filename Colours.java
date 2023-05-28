@@ -1,5 +1,7 @@
-import java.awt.Color;
+import java.awt.*;
 
 public class Colours {
     public static Color backgroundBlue = new Color(16, 128, 177);
+    public static Font largeSerifFont = new Font("Serif", Font.BOLD, 50);
+
 }

@@ -6,9 +6,9 @@ public class Driver {
     public static void main(String[]args){
         frame = new GameFrame("Slide Into Highschool");
         frame.setSize(800, 500);
-        MainMenu m = new MainMenu(frame);
-        // Instructions i = new Instructions(frame);
-        m.run();
-        // i.run();
+        // MainMenu m = new MainMenu(frame);
+        // m.run();
+        Lock l = new Lock(frame);
+        l.run();
     }
 }
