@@ -7,7 +7,8 @@ import java.awt.*;
 public class MainMenu{
     JFrame frame;
     private static boolean isInstruction;
-    private static boolean isLock;
+    private static boolean isLock = false;
+    private static boolean isMazeGame;
 
     public MainMenu(JFrame frame){
         this.frame = frame;
@@ -83,5 +84,11 @@ public class MainMenu{
     }
     public static void setIsLock(boolean onLock){
         isLock = onLock;
+    }
+    public static boolean getIsMazeGame(){
+        return isMazeGame;
+    }
+    public static void setIsMazeGame(boolean onMazeGame){
+        isMazeGame = onMazeGame;
     }
 }

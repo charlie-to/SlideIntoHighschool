@@ -8,7 +8,7 @@ public class Driver {
         frame.setSize(800, 500);
         // MainMenu m = new MainMenu(frame);
         // m.run();
-        Lock l = new Lock(frame);
-        l.run();
+        ClassMaze m = new ClassMaze(frame);
+        m.run();
     }
 }
