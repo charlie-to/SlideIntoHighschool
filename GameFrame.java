@@ -114,12 +114,32 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener
             MainMenu ex = new MainMenu(this);
             ex.run();
         }  
+        
+        //ESCAPE MAP
+        int moveAmt = 5;
+        if (e.getKeyChar() == 's' && MainMenu.getIsEscapeMap()){
+            EscapeMap.yPos += moveAmt;
+            EscapeMap m = new EscapeMap(this);
+            m.run();
+        }
+        if (e.getKeyChar() == 'w' && MainMenu.getIsEscapeMap()){
+            EscapeMap.yPos -= moveAmt;
+            EscapeMap m = new EscapeMap(this);
+            m.run();
+        }
+        if (e.getKeyChar() == 'a' && MainMenu.getIsEscapeMap()){
+            EscapeMap.xPos -= moveAmt;
+            EscapeMap m = new EscapeMap(this);
+            m.run();
+        }
+        if (e.getKeyChar() == 'd' && MainMenu.getIsEscapeMap()){
+            EscapeMap.xPos += moveAmt;
+            EscapeMap m = new EscapeMap(this);
+            m.run();
+        }
     }
-    @Override
-    public void keyPressed(KeyEvent e) {}
-    @Override
-    public void keyReleased(KeyEvent e) {
-    }
+    @Override public void keyPressed(KeyEvent e) {}
+    @Override public void keyReleased(KeyEvent e) {}
 
 
     @Override

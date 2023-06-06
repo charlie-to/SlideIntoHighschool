@@ -5,9 +5,7 @@ public class Driver {
         frame.setSize(800, 500);
         MainMenu m = new MainMenu(frame);
         m.run();
-        // ClassMaze m = new ClassMaze(frame);
+        // Map m = new Map(frame);
         // m.run();
-        // LearningHall l = new LearningHall(frame);
-        // l.run();
     }
 }

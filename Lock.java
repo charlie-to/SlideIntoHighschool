@@ -11,7 +11,7 @@ public class Lock {
     public static int curNum;
 
     public static boolean checkWinner(){
-        String[] winCombo = {"down", "down", "down", "down", "down", "down", "down", "down", "down", "up", "up", "up", "up", "up", "up", "up", "up", "up", "up", "up", "up", "up"};
+        String[] winCombo = { "up", "up", "up", "up", "up", "up", "up", "down", "down", "down", "down", "down", "down", "down", "down", "down","down","down"};
         if (curNum == 30 && turns.size() > 18+1){
             for (int x = turns.size()-1, i = 0; i < winCombo.length ;x--, i ++){
                 if (turns.get(x) == winCombo[i]){

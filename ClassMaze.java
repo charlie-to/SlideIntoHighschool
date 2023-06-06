@@ -92,7 +92,6 @@ public class ClassMaze {
                     x += width;
                 }
             }
-            
             // CHARACTER
             g.setColor(green);
             g.fillOval(curCharX,curCharY, charSize, charSize);

@@ -14,6 +14,9 @@ public class MainMenu{
     private static boolean isLearningCaf;
     private static boolean isLearningText;
     private static boolean isCongrats;
+    private static boolean isEscapeMap;
+    private static boolean isMap;
+    private static boolean isTextScreen;
 
     public MainMenu(JFrame frame){
         this.frame = frame;
@@ -75,7 +78,6 @@ public class MainMenu{
                 l.run();
             }
         });
-
         deficiencies.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("deficiencies clicked");
@@ -83,6 +85,21 @@ public class MainMenu{
                 h.run();
             }
         });
+        maze.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("maze clicked");
+                ClassMaze c = new ClassMaze(frame);
+                c.run();
+            }
+        });
+        escape.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.out.println("escape clicked");
+                EscapeMap m = new EscapeMap(frame);
+                m.run();
+            }
+        });
+        
     }
 
     public static boolean getIsInstruction(){
@@ -104,6 +121,12 @@ public class MainMenu{
     public static void setIsMazeGame(boolean onMazeGame){
         isMazeGame = onMazeGame;
     }
+    public static boolean getIsMap(){
+        return isMap;
+    }
+    public static void setIsMap(boolean onMap){
+        isMap = onMap;
+    }    
     public static boolean getIsLearningText(){
         return isLearningText;
     }
@@ -127,14 +150,24 @@ public class MainMenu{
     }
     public static void setIsLearningCaf(boolean onLearningCaf){
         isLearningCaf = onLearningCaf;
-    }
-
-    
+    }    
     public static boolean getIsCongrats(){
         return isCongrats;
     }
     public static void setIsCongrats(boolean onCongrats){
         isCongrats = onCongrats;
     }
+    public static boolean getIsEscapeMap(){
+        return isEscapeMap;
+    }
+    public static void setIsEscapeMap(boolean onEscapeMap){
+        isEscapeMap = onEscapeMap;
+    }
 
+    public static boolean getIsTextScreen(){
+        return isTextScreen;
+    }
+    public static void setIsTextScreen(boolean onTextScreen){
+        isTextScreen = onTextScreen;
+    }
 }
