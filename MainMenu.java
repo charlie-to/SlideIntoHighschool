@@ -9,6 +9,11 @@ public class MainMenu{
     private static boolean isInstruction;
     private static boolean isLock = false;
     private static boolean isMazeGame;
+    private static boolean isLearningHall;
+    private static boolean isLearningClassroom;
+    private static boolean isLearningCaf;
+    private static boolean isLearningText;
+    private static boolean isCongrats;
 
     public MainMenu(JFrame frame){
         this.frame = frame;
@@ -32,11 +37,11 @@ public class MainMenu{
         
         JPanel menuPanel = new JPanel(new GridLayout(3, 2, 20, 20), false);
         JButton instructions = new JButton("Instructions");
-        JButton deficiencies = new JButton("Deficiencies");
+        JButton deficiencies = new JButton("Deficiencies (1)");
         JButton scores = new JButton("Scores");
         JButton exit = new JButton("Exit");
-        JButton maze = new JButton("Maze");
-        JButton escape = new JButton("Escape");
+        JButton maze = new JButton("Maze (2)");
+        JButton escape = new JButton("Escape (3)");
         menuPanel.setBorder(new EmptyBorder(120, 170, 100, 170));
         styleBtn(instructions);
         styleBtn(deficiencies);
@@ -70,6 +75,14 @@ public class MainMenu{
                 l.run();
             }
         });
+
+        deficiencies.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("deficiencies clicked");
+                LearningHall h = new LearningHall(frame);
+                h.run();
+            }
+        });
     }
 
     public static boolean getIsInstruction(){
@@ -91,4 +104,37 @@ public class MainMenu{
     public static void setIsMazeGame(boolean onMazeGame){
         isMazeGame = onMazeGame;
     }
+    public static boolean getIsLearningText(){
+        return isLearningText;
+    }
+    public static void setIsLearningText(boolean onLearningText){
+        isLearningText = onLearningText;
+    }
+    public static boolean getIsLearningHall(){
+        return isLearningHall;
+    }
+    public static void setIsLearningHall(boolean onLearningHall){
+        isLearningHall = onLearningHall;
+    }
+    public static boolean getIsLearningClassroom(){
+        return isLearningClassroom;
+    }
+    public static void setIsLearningClassroom(boolean onLearningClassroom){
+        isLearningClassroom = onLearningClassroom;
+    }
+    public static boolean getIsLearningCaf(){
+        return isLearningCaf;
+    }
+    public static void setIsLearningCaf(boolean onLearningCaf){
+        isLearningCaf = onLearningCaf;
+    }
+
+    
+    public static boolean getIsCongrats(){
+        return isCongrats;
+    }
+    public static void setIsCongrats(boolean onCongrats){
+        isCongrats = onCongrats;
+    }
+
 }

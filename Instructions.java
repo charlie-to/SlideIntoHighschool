@@ -43,6 +43,4 @@ public class Instructions {
             g.drawString("Instructions", 300, 75);
         }
     }
-    
-
 }
