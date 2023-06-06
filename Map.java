@@ -8,7 +8,7 @@ public class Map {
    int stage;
    int selected;
    boolean[] found;
-
+   public static boolean win;
    public Map(JFrame frame) {
       this.frame = frame;
       frame.addMouseListener(new ClickHandler());
@@ -29,12 +29,18 @@ public class Map {
 
    public boolean checkWin() {
       if (found[0] && found[1] && found[2] && found[3])
+      {
+         win = true;
          return true;
+      }
       return false;
    }
 
    public void run() {
       frame.getContentPane().add(new Drawing());
+      if (checkWin()){
+         System.out.println("winsadf");
+      }
       frame.setVisible(true);
    }
 
@@ -69,8 +75,14 @@ public class Map {
                if (selected == 4)
                   found[3] = true;
             }
+            if (checkWin()){
+               System.out.println("hi");
+               // return;
+            }
          }
-         checkWin();
+         // if (checkWin()){
+         //    return;
+         // };
          frame.repaint();
 
       }
@@ -175,7 +187,10 @@ public class Map {
             g.drawString("Gym", 660, 370);
 
          }
-
+         if (win){
+            System.out.println("bye");
+            return;
+         }
       }
    }
 }

@@ -18,11 +18,11 @@ public class Lock {
                     continue;
                 }
                 else{
-                    System.out.println("no win");
+                    // System.out.println("no win");
                     return false;
                 }
             }
-            System.out.println("win");
+            // System.out.println("win");
             return true;
         }
         return false;
@@ -41,7 +41,7 @@ public class Lock {
     public void run() {
         frame.getContentPane().add(new Drawing());
         curNum = (degrees/45)*5;
-        System.out.println(curNum);
+        // System.out.println(curNum);
         frame.setVisible(true);
     }
 

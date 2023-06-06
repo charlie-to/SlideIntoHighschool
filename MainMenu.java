@@ -163,7 +163,6 @@ public class MainMenu{
     public static void setIsEscapeMap(boolean onEscapeMap){
         isEscapeMap = onEscapeMap;
     }
-
     public static boolean getIsTextScreen(){
         return isTextScreen;
     }

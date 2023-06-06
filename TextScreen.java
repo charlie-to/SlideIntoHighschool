@@ -28,6 +28,7 @@ public class TextScreen {
             g.setColor(Color.WHITE);
             g.setFont(new Font("Roboto", Font.PLAIN, 30));
             g.drawString(text, 100, 170);
+            g.drawString("Press 'n' when you are ready to start", 100, 210);
         }
     }
 }

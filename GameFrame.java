@@ -2,8 +2,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
-public class GameFrame extends JFrame implements KeyListener, MouseListener 
+public class GameFrame extends JFrame implements KeyListener, MouseListener
 {
     public GameFrame(String title){
         super(title);
@@ -64,12 +65,12 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener
             Lock.turns.add("up");
             Lock l = new Lock(this);
             l.run();
-            if (l.checkWinner()){
-                MainMenu.setIsLock(false);
-                resetVars();
-                MainMenu ex = new MainMenu(this);
-                ex.run();
-            }
+            // if (l.checkWinner()){
+            //     MainMenu.setIsLock(false);
+            //     resetVars();
+            //     MainMenu ex = new MainMenu(this);
+            //     ex.run();
+            // }
         }
         if (e.getKeyChar() == 's' && MainMenu.getIsLock()){
             if (Lock.degrees == 0)
@@ -88,22 +89,22 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener
             }
         }
         // MAZE
-        if (e.getKeyChar() == 'w' && MainMenu.getIsMazeGame()){
+        if (e.getKeyChar() == 'w' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen()){
             ClassMaze.move("up");
             ClassMaze cm = new ClassMaze(this);
             cm.run();
         }
-        if (e.getKeyChar() == 's' && MainMenu.getIsMazeGame()){
+        if (e.getKeyChar() == 's' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen()){
             ClassMaze.move("down");
             ClassMaze cm = new ClassMaze(this);
             cm.run();
         }
-        if (e.getKeyChar() == 'a' && MainMenu.getIsMazeGame()){
+        if (e.getKeyChar() == 'a' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen()){
             ClassMaze.move("left");
             ClassMaze cm = new ClassMaze(this);
             cm.run();
         }
-        if (e.getKeyChar() == 'd' && MainMenu.getIsMazeGame()){
+        if (e.getKeyChar() == 'd' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen()){
             ClassMaze.move("right");
             ClassMaze cm = new ClassMaze(this);
             cm.run();
@@ -114,6 +115,46 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener
             MainMenu ex = new MainMenu(this);
             ex.run();
         }  
+        
+        if (MainMenu.getIsLock() && MainMenu.getIsMazeGame()){  // Run lock game and check if complete
+            Lock l = new Lock(this);
+            l.run();
+            if(Lock.checkWinner()){
+                // MainMenu.setIsLock(false);
+                Congrats c = new Congrats(this,"Yay! Lock Level has been completed.");
+                c.run();
+                if (e.getKeyChar() == ' '){
+                    MainMenu.setIsLock(false);
+                    ClassMaze m = new ClassMaze(this);
+                    m.run();
+                }
+            }
+        }
+        else if (ClassMaze.checkLockGame() && MainMenu.getIsMazeGame()){
+            if (e.getKeyChar() == 'n' && !MainMenu.getIsLock()){
+                MainMenu.setIsTextScreen(false);
+                Lock l = new Lock(this);
+                l.run();
+            }
+            else {
+                TextScreen t = new TextScreen(this, "Obstacle #1: Unlock The Lock");
+                t.run();
+            }
+        }
+        if (ClassMaze.checkMapGame() && MainMenu.getIsMazeGame()){
+            if (e.getKeyChar() == 'n' && !MainMenu.getIsMap()){
+                MainMenu.setIsTextScreen(false);
+                Map m = new Map(this);
+                m.run();
+                if (Map.win){
+                    System.out.println("asdfsa");
+                }
+            }
+            else {
+                TextScreen t = new TextScreen(this, "Obstacle #2: Map the school");
+                t.run();
+            }
+        }
         
         //ESCAPE MAP
         int moveAmt = 5;
@@ -267,12 +308,8 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener
             }
         }
     }
-    @Override
-    public void mousePressed(MouseEvent e) {}
-    @Override
-    public void mouseReleased(MouseEvent e) {}
-    @Override
-    public void mouseEntered(MouseEvent e) {}
-    @Override
-    public void mouseExited(MouseEvent e) {}
+    @Override public void mousePressed(MouseEvent e) {}
+    @Override public void mouseReleased(MouseEvent e) {}
+    @Override public void mouseEntered(MouseEvent e) {}
+    @Override public void mouseExited(MouseEvent e) {}
 }

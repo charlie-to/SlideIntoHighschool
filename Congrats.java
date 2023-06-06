@@ -29,7 +29,7 @@ public class Congrats {
             g.setFont(new Font("Roboto", Font.PLAIN, 30));
             g.drawString("Congrats!", 100, 130);   
             g.drawString(text, 100, 170);
-            g.drawString("Press any key to return to main menu", 100, 210);   
+            g.drawString("Press the space bar to return to continue", 100, 210);   
         }
     }
 }

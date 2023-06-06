@@ -20,6 +20,13 @@ public class ClassMaze {
     public static int endY=4;
     public static int curX = startX;
     public static int curY = startY;
+
+    public static int lockX=9;
+    public static int lockY=1;
+
+    public static int mapX=6;
+    public static int mapY=3;
+
     public ClassMaze(JFrame frame) {
         this.frame = frame;
         // Clear the frame
@@ -31,6 +38,18 @@ public class ClassMaze {
     }
     public static boolean checkWinner(){
         if (curX == endX && curY == endY){
+            return true;
+        }
+        return false;
+    }
+    public static boolean checkLockGame(){
+        if (curX == lockX && curY == lockY){
+            return true;
+        }
+        return false;
+    }
+    public static boolean checkMapGame(){
+        if (curX == mapX && curY == mapY){
             return true;
         }
         return false;
