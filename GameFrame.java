@@ -214,6 +214,20 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             EscapeMap m = new EscapeMap(this);
             m.run();
         }
+        //ESCAPE MAP IN LIBRARY
+        if (MainMenu.getIsEscapeMap() && (EscapeMap.xPos > 511 && EscapeMap.xPos < 700) && (EscapeMap.yPos > 250 && EscapeMap.yPos < 413)){
+            // System.ou  t.println("IN LIBRARY");
+            EscapeMap.text = "Library Game";
+        }
+        else if (MainMenu.getIsEscapeMap()&& (EscapeMap.xPos > 328 && EscapeMap.xPos < 510) && (EscapeMap.yPos > 201 && EscapeMap.yPos < 454)){
+            EscapeMap.text = "Gym Game";
+        }
+        else if (MainMenu.getIsEscapeMap()&& (EscapeMap.xPos > 126 && EscapeMap.xPos < 507) && (EscapeMap.yPos > 100 && EscapeMap.yPos < 200)){
+            EscapeMap.text = "Hallway Game";
+        }
+        else{
+            EscapeMap.text = "Exit";
+        }
     }
 
     @Override
@@ -382,12 +396,19 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             }
             try {
                 Robot robot = new Robot();
-                robot.keyPress(KeyEvent.VK_M);
+                robot.keyPress(KeyEvent.VK_S);
             } catch (Exception d) {
                 System.out.println("robot error");
             }
             // Map l = new Map(this);
             // l.run();
+        }
+        
+        // DELETE LATER TESTING CODE
+        if (MainMenu.getIsEscapeMap()){
+            x = p.getX();
+            y = p.getY();
+            System.out.println("X: " + x + "    Y: " + y);
         }
     }
 
@@ -411,7 +432,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             }
             try {
                 Robot robot = new Robot();
-                robot.keyPress(KeyEvent.VK_M);
+                robot.keyPress(KeyEvent.VK_A);
             } catch (Exception d) {
                 System.out.println("robot error");
             }
@@ -419,7 +440,6 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             // m.run();
         }
     }
-
     @Override
     public void mouseReleased(MouseEvent e) {
 

@@ -1,7 +1,14 @@
 import javax.swing.*;
-
 import java.awt.*;
-
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+/**
+ * @author Charlie To
+ * Date: June 1st, 2023
+ * Time Spent: 1 hr
+ * Version #: 1
+ */
 public class ClassMaze {
     JFrame frame;
     Color lightRed = new Color(244, 204, 204);
@@ -39,30 +46,51 @@ public class ClassMaze {
         this.frame.repaint();
         MainMenu.setIsMazeGame(true);
     }
+    /**
+     * Checks if the maze is complete
+     * @return true if complete
+     */
     public static boolean checkWinner(){
         if (curX == endX && curY == endY){
             return true;
         }
         return false;
     }
+    /**
+     * check if character is on the lock game square
+     * @return true if it's on the square
+     */
     public static boolean checkLockGame(){
         if (curX == lockX && curY == lockY){
             return true;
         }
         return false;
     }
+    /**
+     * check if character is on map game square
+     * @return true if character is on square
+     */
     public static boolean checkMapGame(){
         if (curX == mapX && curY == mapY){
             return true;
         }
         return false;
     }
+    /**
+     * checks if character is on meet game square
+     * @return true if character is on square
+     */
     public static boolean checkMeetGame(){
         if (curX == meetX && curY == meetY){
             return true;
         }
         return false;
     }
+    /**
+     * Moves the character
+     * @param direction direction to be moved in
+     * @return true
+     */
     public static boolean move(String direction){
         if (direction.equals("up") && curY-1 >=0 && maze[curY-1][curX]){
             curY -= 1;
@@ -82,6 +110,9 @@ public class ClassMaze {
         }
         return true;
     }
+    /**
+     * displays the screen
+     */
     public void run() {
         frame.getContentPane().add(new Drawing());
         frame.setVisible(true);
@@ -120,6 +151,21 @@ public class ClassMaze {
                     x += width;
                 }
             }
+            try{
+                BufferedImage img = ImageIO.read(new File("images/items/lock.png"));
+                Image newImage = img.getScaledInstance(25, 35, Image.SCALE_DEFAULT);
+                g.drawImage(newImage,  475, 145, null);
+            } catch (Exception e){System.out.println("Error with image");}
+            try{
+                BufferedImage img = ImageIO.read(new File("images/items/mapIcon.png"));
+                Image newImage = img.getScaledInstance(25, 35, Image.SCALE_DEFAULT);
+                g.drawImage(newImage,  355, 263, null);
+            } catch (Exception e){System.out.println("Error with image");}
+            try{
+                BufferedImage img = ImageIO.read(new File("images/person.png"));
+                Image newImage = img.getScaledInstance(25, 35, Image.SCALE_DEFAULT);
+                g.drawImage(newImage,  198, 382, null);
+            } catch (Exception e){System.out.println("Error with image");}
             // CHARACTER
             g.setColor(green);
             g.fillOval(curCharX,curCharY, charSize, charSize);

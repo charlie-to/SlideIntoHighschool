@@ -18,6 +18,8 @@ public class MainMenu{
     private static boolean isMap;
     private static boolean isTextScreen;
     private static boolean isMeetPerson;
+    private static boolean isLibraryGame;
+    private static boolean isHallwayGame;
 
     public MainMenu(JFrame frame){
         this.frame = frame;
@@ -176,5 +178,16 @@ public class MainMenu{
     public static void setIsMeetPerson(boolean onMeetPerson){
         isMeetPerson = onMeetPerson;
     }
-
+    public static boolean getIsLibraryGame(){
+        return isLibraryGame;
+    }
+    public static void setIsLibraryGame(boolean onLibraryGame){
+        isLibraryGame = onLibraryGame;
+    }
+    public static boolean getIsHallwayGame(){
+        return isHallwayGame;
+    }
+    public static void setIsHallwayGame(boolean onHallwayGame){
+        isHallwayGame = onHallwayGame;
+    }
 }

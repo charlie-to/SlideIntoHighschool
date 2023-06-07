@@ -6,6 +6,7 @@ import java.io.File;
 
 public class EscapeMap {
     JFrame frame;
+    public static String text = "Exit";
     public EscapeMap(JFrame frame) {
         this.frame = frame;
         // Clear the frame
@@ -37,6 +38,11 @@ public class EscapeMap {
                 Image newImage = img.getScaledInstance(40, 70, Image.SCALE_DEFAULT);
                 g.drawImage(newImage,  xPos, yPos, null);
             } catch (Exception e){System.out.println("Error with image");}
+            g.setColor(Color.GREEN);
+            g.fillRect(80, 360, 210, 70);
+            g.setColor(Color.BLACK);
+            g.setFont(Colours.mediumSerifFont);
+            g.drawString(text, 80, 405);
         }
     }
 }

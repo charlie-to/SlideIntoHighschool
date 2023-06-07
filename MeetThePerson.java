@@ -29,46 +29,6 @@ public class MeetThePerson {
       frame.setVisible(true);
    }
 
-   // class ClickHandler extends MouseAdapter {
-   //    public void mouseReleased(MouseEvent e) {
-
-   //       x = e.getX();
-   //       y = e.getY() - 25;
-   //       hover1 = false;
-   //       hover2 = false;
-
-   //       if (x > 350 && x < 500 && y > 350 && y < 425) {
-   //          stage++;
-   //       } else if (x > 550 && x < 700 && y > 350 && y < 425) {
-   //          stage++;
-   //       }
-
-   //       frame.repaint();
-
-   //    }
-
-   //    public void mousePressed(MouseEvent e) {
-
-   //       x = e.getX();
-   //       y = e.getY() - 25;
-
-   //       if (x > 350 && x < 500 && y > 350 && y < 425) {
-   //          hover1 = true;
-   //       } else {
-   //          hover1 = false;
-   //       }
-
-   //       if (x > 550 && x < 700 && y > 350 && y < 425) {
-   //          hover2 = true;
-   //       } else {
-   //          hover2 = false;
-   //       }
-
-   //       frame.repaint();
-
-   //    }
-   // }
-
    class Drawing extends JComponent {
       public void paint(Graphics g) {
          super.paintComponent(g);
