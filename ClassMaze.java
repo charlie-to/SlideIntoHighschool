@@ -25,7 +25,10 @@ public class ClassMaze {
     public static int lockY=1;
 
     public static int mapX=6;
-    public static int mapY=3;
+    public static int mapY=4;
+
+    public static int meetX = 2;
+    public static int meetY = 7;
 
     public ClassMaze(JFrame frame) {
         this.frame = frame;
@@ -50,6 +53,12 @@ public class ClassMaze {
     }
     public static boolean checkMapGame(){
         if (curX == mapX && curY == mapY){
+            return true;
+        }
+        return false;
+    }
+    public static boolean checkMeetGame(){
+        if (curX == meetX && curY == meetY){
             return true;
         }
         return false;

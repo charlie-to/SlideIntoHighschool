@@ -5,7 +5,7 @@ public class Driver {
         frame.setSize(800, 500);
         MainMenu m = new MainMenu(frame);
         m.run();
-        // Map m = new Map(frame);
+        // MeetThePerson m = new MeetThePerson(frame);
         // m.run();
     }
 }

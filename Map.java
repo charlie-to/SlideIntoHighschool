@@ -3,22 +3,17 @@ import java.awt.*;
 import javax.swing.*;
 public class Map {
    JFrame frame;
-   int x, y;
-   int xPos, yPos;
-   int stage;
-   int selected;
-   boolean[] found;
+   public static int x =0;
+   public static int y=0;
+   public static int xPos =0;
+   public static int yPos=0;
+   public static int stage =1;
+   public static int selected = 0;
+   public static boolean[] found = new boolean[] { false, false, false, false };
    public static boolean win;
    public Map(JFrame frame) {
       this.frame = frame;
-      frame.addMouseListener(new ClickHandler());
-      found = new boolean[] { false, false, false, false };
-      x = 0;
-      y = 0;
-      xPos = 0;
-      yPos = 0;
-      stage = 1;
-      selected = 0;
+      // frame.addMouseListener(new ClickHandler());
       // Clear the frame
       Container contentPane = frame.getContentPane();
       contentPane.removeAll();
@@ -27,7 +22,7 @@ public class Map {
       MainMenu.setIsMap(true);
    }
 
-   public boolean checkWin() {
+   public static boolean checkWin() {
       if (found[0] && found[1] && found[2] && found[3])
       {
          win = true;
@@ -38,55 +33,45 @@ public class Map {
 
    public void run() {
       frame.getContentPane().add(new Drawing());
-      if (checkWin()){
-         System.out.println("winsadf");
-      }
       frame.setVisible(true);
    }
 
-   class ClickHandler extends MouseAdapter {
-      public void mouseReleased(MouseEvent e) {
+   // class ClickHandler extends MouseAdapter {
+   //    public void mouseReleased(MouseEvent e) {
 
-         x = e.getX();
-         y = e.getY() - 25;
-         if (stage == 1) {
-            if (x > 650 && x < 700 && y > 100 && y < 200) {
-               stage = 2;
-            }
-         } else {
-            if (x > 650 && x < 700 && y > 100 && y < 150) {
-               selected = 1;
-            } else if (x > 650 && x < 700 && y > 180 && y < 230) {
-               selected = 2;
-            } else if (x > 650 && x < 700 && y > 260 && y < 310) {
-               selected = 3;
-            } else if (x > 650 && x < 700 && y > 340 && y < 390) {
-               selected = 4;
-            } else if (x > 110 && x < 190 && y > 110 && y < 190) {
-               if (selected == 1)
-                  found[0] = true;
-            } else if (x > 410 && x < 490 && y > 110 && y < 190) {
-               if (selected == 2)
-                  found[1] = true;
-            } else if (x > 310 && x < 390 && y > 310 && y < 390) {
-               if (selected == 3)
-                  found[2] = true;
-            } else if (x > 210 && x < 390 && y > 110 && y < 190) {
-               if (selected == 4)
-                  found[3] = true;
-            }
-            if (checkWin()){
-               System.out.println("hi");
-               // return;
-            }
-         }
-         // if (checkWin()){
-         //    return;
-         // };
-         frame.repaint();
+   //       x = e.getX();
+   //       y = e.getY() - 25;
+   //       if (stage == 1) {
+   //          if (x > 650 && x < 700 && y > 100 && y < 200) {
+   //             stage = 2;
+   //          }
+   //       } else {
+   //          if (x > 650 && x < 700 && y > 100 && y < 150) {
+   //             selected = 1;
+   //          } else if (x > 650 && x < 700 && y > 180 && y < 230) {
+   //             selected = 2;
+   //          } else if (x > 650 && x < 700 && y > 260 && y < 310) {
+   //             selected = 3;
+   //          } else if (x > 650 && x < 700 && y > 340 && y < 390) {
+   //             selected = 4;
+   //          } else if (x > 110 && x < 190 && y > 110 && y < 190) {
+   //             if (selected == 1)
+   //                found[0] = true;
+   //          } else if (x > 410 && x < 490 && y > 110 && y < 190) {
+   //             if (selected == 2)
+   //                found[1] = true;
+   //          } else if (x > 310 && x < 390 && y > 310 && y < 390) {
+   //             if (selected == 3)
+   //                found[2] = true;
+   //          } else if (x > 210 && x < 390 && y > 110 && y < 190) {
+   //             if (selected == 4)
+   //                found[3] = true;
+   //          }
+   //       }
+   //       frame.repaint();
 
-      }
-   }
+   //    }
+   // }
 
    class Drawing extends JComponent {
       public void paint(Graphics g) {

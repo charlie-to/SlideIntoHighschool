@@ -4,9 +4,21 @@ import javax.swing.*;
 public class Congrats {
     JFrame frame;
     String text;
+    String text2 = "press space to continue";
     public Congrats(JFrame frame, String text){
         this.frame = frame;
         this.text = text;
+        // Clear the frame
+        Container contentPane = frame.getContentPane();
+        contentPane.removeAll();
+        this.frame.revalidate();
+        this.frame.repaint();
+        MainMenu.setIsCongrats(true);
+    }
+    public Congrats(JFrame frame, String text, String text2){
+        this.frame = frame;
+        this.text = text;
+        this.text2 = text2;
         // Clear the frame
         Container contentPane = frame.getContentPane();
         contentPane.removeAll();
@@ -29,7 +41,7 @@ public class Congrats {
             g.setFont(new Font("Roboto", Font.PLAIN, 30));
             g.drawString("Congrats!", 100, 130);   
             g.drawString(text, 100, 170);
-            g.drawString("Press the space bar to return to continue", 100, 210);   
+            g.drawString(text2, 100, 210);   
         }
     }
 }

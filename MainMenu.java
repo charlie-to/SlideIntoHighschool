@@ -7,7 +7,7 @@ import java.awt.*;
 public class MainMenu{
     JFrame frame;
     private static boolean isInstruction;
-    private static boolean isLock = false;
+    private static boolean isLock;
     private static boolean isMazeGame;
     private static boolean isLearningHall;
     private static boolean isLearningClassroom;
@@ -17,6 +17,7 @@ public class MainMenu{
     private static boolean isEscapeMap;
     private static boolean isMap;
     private static boolean isTextScreen;
+    private static boolean isMeetPerson;
 
     public MainMenu(JFrame frame){
         this.frame = frame;
@@ -169,4 +170,11 @@ public class MainMenu{
     public static void setIsTextScreen(boolean onTextScreen){
         isTextScreen = onTextScreen;
     }
+    public static boolean getIsMeetPerson(){
+        return isMeetPerson;
+    }
+    public static void setIsMeetPerson(boolean onMeetPerson){
+        isMeetPerson = onMeetPerson;
+    }
+
 }
