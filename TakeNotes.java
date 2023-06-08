@@ -10,6 +10,7 @@ public class TakeNotes {
    public static int stage =1;
    public static int score =0;
    public static boolean isComplete = false;
+   public static boolean win = false;
 
    public TakeNotes(JFrame frame) {
       this.frame = frame;
@@ -88,10 +89,12 @@ public class TakeNotes {
             g.drawString("Congratulations!", 200, 230);
             g.drawString("You have successfully", 200, 280);
             g.drawString("taken notes!", 200, 330);
+            win = true;
             }else{
             g.drawString("Oh no!", 200, 230);
             g.drawString("Your notes were bad and", 200, 280);
             g.drawString("you failed the test!", 200, 330);
+            win = false;
             }
             g.setColor(Color.BLACK);
             g.fillRect(300,420,200,60);
@@ -101,7 +104,9 @@ public class TakeNotes {
             g.drawString("Continue", 330, 450);
          
          }else {
-            System.out.println("done");
+            g.setFont(new Font("Roboto", Font.PLAIN, 15));
+            g.drawString("Press anywhere to continue",200,200);
+            System.out.println(TakeNotes.isComplete);
             TakeNotes.isComplete = true;
          }
       }

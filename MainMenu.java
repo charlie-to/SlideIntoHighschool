@@ -58,7 +58,7 @@ public class MainMenu{
         styleBtn(escape);
         menuPanel.add(instructions);
         menuPanel.add(deficiencies);
-        menuPanel.add(scores);
+        // menuPanel.add(scores);
         menuPanel.add(maze);
         menuPanel.add(exit);
         menuPanel.add(escape);
@@ -77,9 +77,7 @@ public class MainMenu{
         });
         exit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                System.out.println("exit clicked");
-                Lock l = new Lock(frame);
-                l.run();
+                System.exit(0);
             }
         });
         deficiencies.addActionListener(new ActionListener() {

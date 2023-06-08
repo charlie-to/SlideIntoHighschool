@@ -112,7 +112,7 @@ public class TalkToTeacher {
             g.drawString("Continue", 370, 400);
 
          }else {
-            System.out.println("done");
+            System.out.println("done: " + score);
             TalkToTeacher.isComplete = true;
          }
       }

@@ -24,10 +24,29 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         ClassMaze.curX = ClassMaze.startX;
         ClassMaze.curY = ClassMaze.startY;
         // ESCAPE MAZE
-        EscapeMap.text = "Exit";
-        EscapeMap.isHallComplete = false;
+        // EscapeMap.text = "Exit";
+        // EscapeMap.isHallComplete = false;
         //HALLWAY GAME
         HallwayGame.items = new ArrayList<String>(4);
+        // TAKE NOES
+        TakeNotes.x=0;
+        TakeNotes.y = 0;
+        TakeNotes.xPos = 0;
+        TakeNotes.yPos =0;
+        TakeNotes.stage =1;
+        TakeNotes.score =0;
+        TakeNotes.isComplete = false;
+        TakeNotes.win = false;
+        // TALK TO TEACHER
+        TalkToTeacher.x=0;
+        TalkToTeacher.y = 0;
+        TalkToTeacher.xPos = 0;
+        TalkToTeacher.yPos =0;
+        TalkToTeacher.stage =1;
+        TalkToTeacher.score = 0;
+        TalkToTeacher.hover1 = false;
+        TalkToTeacher.hover2 = false;
+        TalkToTeacher.isComplete = false;
     }
 
     @Override
@@ -228,13 +247,18 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         else if (MainMenu.getIsEscapeMap()&& (EscapeMap.xPos > 126 && EscapeMap.xPos < 507) && (EscapeMap.yPos > 100 && EscapeMap.yPos < 200) && !EscapeMap.isHallComplete){
             EscapeMap.text = "Hallway Game";
         }
+        else if (MainMenu.getIsEscapeMap()&& (EscapeMap.xPos > 314 && EscapeMap.xPos < 390) && (EscapeMap.yPos > 50 && EscapeMap.yPos < 186) && !EscapeMap.isTakeNotesComplete){
+            EscapeMap.text = "Take Notes Game";
+        }
+        else if (MainMenu.getIsEscapeMap()&& (EscapeMap.xPos > 228 && EscapeMap.xPos < 290) && (EscapeMap.yPos > 200 && EscapeMap.yPos < 300) && !EscapeMap.isTalkToTeacherComplete){
+            EscapeMap.text = "Talk to Teacher Game";
+        }
         else{
             EscapeMap.text = "Exit";
         }
 
         //HALLWAY GAME
         if (!HallwayGame.checkWin() && HallwayGame.items.size() == 4){
-            System.out.println("dsfih");
             resetVars();
             HallwayGame h = new HallwayGame(this);
             h.run();
@@ -377,7 +401,6 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         if (MainMenu.getIsMap()) {
             x = p.getX();
             y = p.getY() - 25;
-            // System.out.println(x + " " + y);
             if (Map.stage == 1) {
                 if (x > 650 && x < 700 && y > 100 && y < 200) {
                     Map.stage = 2;
@@ -418,9 +441,22 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
 
         // ESCAPE MAP
         if (MainMenu.getIsEscapeMap()){
-            if ((x > 88 && x < 294) && (y > 392 && y < 460) && !EscapeMap.isHallComplete){
+            if ((x > 88 && x < 294) && (y > 392 && y < 460) && !EscapeMap.isHallComplete && EscapeMap.text.equals("Hallway Game")){
                 HallwayGame h = new HallwayGame(this);
                 h.run();
+            }
+            if ((x > 88 && x < 294) && (y > 392 && y < 460) && !EscapeMap.isTakeNotesComplete && EscapeMap.text.equals("Take Notes Game")){
+                TakeNotes n = new TakeNotes(this);
+                n.run();
+            }
+            if ((x > 88 && x < 294) && (y > 392 && y < 460) && !EscapeMap.isTalkToTeacherComplete && EscapeMap.text.equals("Talk to Teacher Game")){
+                TalkToTeacher n = new TalkToTeacher(this);
+                n.run();
+            }
+            if ((x > 88 && x < 294) && (y > 392 && y < 460) && EscapeMap.text.equals("Exit")){
+                resetVars();
+                MainMenu m = new MainMenu(this);
+                m.run();
             }
         }
 
@@ -490,9 +526,69 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             // MeetThePerson m = new MeetThePerson(this);
             // m.run();
         }
+        // TALK TO TEACHER GAME
+        if (MainMenu.getIsTalkToTeacher()) {
+            MainMenu.setIsEscapeMap(false);
+            if(TalkToTeacher.isComplete){
+                if(TalkToTeacher.score == 3){
+                    EscapeMap.isTalkToTeacherComplete = true;
+                    MainMenu.setIsTalkToTeacher(false);
+                    EscapeMap m = new EscapeMap(this);
+                    m.run();
+                }
+                else{
+                    resetVars();
+                    TalkToTeacher t = new TalkToTeacher(this);
+                    t.run();
+                }
+            }
+            Point p = MouseInfo.getPointerInfo().getLocation();
+            SwingUtilities.convertPointFromScreen(p, e.getComponent());
+            double x = p.getX();
+            double y = p.getY() - 25;
+            if (x > 350 && x < 500 && y > 350 && y < 425) {
+                TalkToTeacher.hover1 = true;
+                if (TalkToTeacher.stage == 1){
+                    TalkToTeacher.score ++;
+                }
+                System.out.println(TalkToTeacher.stage);
+                TalkToTeacher.stage ++;
+            } else {
+                TalkToTeacher.hover1 = false;
+                // TalkToTeacher.stage ++;
+            }
+
+            if (x > 550 && x < 700 && y > 350 && y < 425) {
+                TalkToTeacher.hover2 = true;
+                if (TalkToTeacher.stage == 2 || TalkToTeacher.stage == 3){
+                    TalkToTeacher.score ++;
+                }
+                TalkToTeacher.stage ++;
+            } else {
+                TalkToTeacher.hover2 = false;
+            }
+            if (MainMenu.getIsTalkToTeacher()){
+                TalkToTeacher t = new TalkToTeacher(this);
+                t.run();
+            }
+            // try {
+            //     Robot robot = new Robot();
+            //     robot.keyPress(KeyEvent.VK_A);
+            // } catch (Exception d) {
+            //     System.out.println("robot error");
+            // }
+        }
     }
     @Override
     public void mouseReleased(MouseEvent e) {
+        // // DELETE
+        // if (MainMenu.getIsEscapeMap()){
+        //     Point p = MouseInfo.getPointerInfo().getLocation();
+        //     SwingUtilities.convertPointFromScreen(p, e.getComponent());
+        //     double x = p.getX();
+        //     double y = p.getY();
+        //     System.out.println("X: " + x + "        Y: " + y);
+        // }
         // MEET THE PERSON
         if (MainMenu.getIsMeetPerson()) {
             Point p = MouseInfo.getPointerInfo().getLocation();
@@ -517,11 +613,33 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
 
         // TAKE NOTES
         if (MainMenu.getIsTakeNotes()) {
+            MainMenu.setIsEscapeMap(false);
+
             Point p = MouseInfo.getPointerInfo().getLocation();
             SwingUtilities.convertPointFromScreen(p, e.getComponent());
             double x = p.getX();
             double y = p.getY() - 25;
-            
+            if (TakeNotes.isComplete){
+                // System.out.println("sdfkjdf");
+                MainMenu.setIsTakeNotes(false);
+                if (TakeNotes.win){
+                    EscapeMap.isTakeNotesComplete = true;
+                    MainMenu.setIsTakeNotes(false);
+                    EscapeMap m = new EscapeMap(this);
+                    m.run();
+                }
+                else{
+                    MainMenu.setIsTakeNotes(false);
+                    resetVars();
+                    TakeNotes n = new TakeNotes(this);
+                    n.run();
+                }
+            }
+            else if (MainMenu.getIsTakeNotes()){
+                System.out.println("123");
+                TakeNotes m = new TakeNotes(this);
+                m.run();
+            }
             if (TakeNotes.stage == 1 || TakeNotes.stage == 5) {
                 if(x > 300 && x < 500 && y > 420 && y < 480){
                    TakeNotes.stage++;
@@ -533,14 +651,6 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             } else if (x > 100 && x < 700 && y > 300 && y < 400) {
                 TakeNotes.stage++;
             }
-            try {
-                Robot robot = new Robot();
-                robot.keyPress(KeyEvent.VK_M);
-            } catch (Exception d) {
-                System.out.println("robot error");
-            }
-            TakeNotes m = new TakeNotes(this);
-            m.run();
         }
 
     }
