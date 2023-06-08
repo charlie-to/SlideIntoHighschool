@@ -7,6 +7,7 @@ import java.io.File;
 public class EscapeMap {
     JFrame frame;
     public static String text = "Exit";
+    public static boolean isHallComplete = false;
     public EscapeMap(JFrame frame) {
         this.frame = frame;
         // Clear the frame
@@ -43,6 +44,13 @@ public class EscapeMap {
             g.setColor(Color.BLACK);
             g.setFont(Colours.mediumSerifFont);
             g.drawString(text, 80, 405);
+            if(isHallComplete){
+                try{
+                    BufferedImage img = ImageIO.read(new File("images/check.png"));
+                    Image newImage = img.getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+                    g.drawImage(newImage,  402, 170, null);
+                } catch (Exception e){System.out.println("Error with image");}
+            }
         }
     }
 }

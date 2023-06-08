@@ -23,6 +23,11 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         ClassMaze.curCharY = 144;
         ClassMaze.curX = ClassMaze.startX;
         ClassMaze.curY = ClassMaze.startY;
+        // ESCAPE MAZE
+        EscapeMap.text = "Exit";
+        EscapeMap.isHallComplete = false;
+        //HALLWAY GAME
+        HallwayGame.items = new ArrayList<String>(4);
     }
 
     @Override
@@ -162,8 +167,6 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                 t.run();
             }
         }
-
-
         if (MainMenu.getIsMeetPerson() && MainMenu.getIsMazeGame()) { // Run lock game and check if complete
             System.out.println(MeetThePerson.isComplete);
             if (MeetThePerson.isComplete) {
@@ -222,11 +225,19 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         else if (MainMenu.getIsEscapeMap()&& (EscapeMap.xPos > 328 && EscapeMap.xPos < 510) && (EscapeMap.yPos > 201 && EscapeMap.yPos < 454)){
             EscapeMap.text = "Gym Game";
         }
-        else if (MainMenu.getIsEscapeMap()&& (EscapeMap.xPos > 126 && EscapeMap.xPos < 507) && (EscapeMap.yPos > 100 && EscapeMap.yPos < 200)){
+        else if (MainMenu.getIsEscapeMap()&& (EscapeMap.xPos > 126 && EscapeMap.xPos < 507) && (EscapeMap.yPos > 100 && EscapeMap.yPos < 200) && !EscapeMap.isHallComplete){
             EscapeMap.text = "Hallway Game";
         }
         else{
             EscapeMap.text = "Exit";
+        }
+
+        //HALLWAY GAME
+        if (!HallwayGame.checkWin() && HallwayGame.items.size() == 4){
+            System.out.println("dsfih");
+            resetVars();
+            HallwayGame h = new HallwayGame(this);
+            h.run();
         }
     }
 
@@ -362,7 +373,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                 m.run();
             }
         }
-
+        // MAZE MAP
         if (MainMenu.getIsMap()) {
             x = p.getX();
             y = p.getY() - 25;
@@ -404,11 +415,51 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             // l.run();
         }
         
-        // DELETE LATER TESTING CODE
+
+        // ESCAPE MAP
         if (MainMenu.getIsEscapeMap()){
-            x = p.getX();
-            y = p.getY();
-            System.out.println("X: " + x + "    Y: " + y);
+            if ((x > 88 && x < 294) && (y > 392 && y < 460) && !EscapeMap.isHallComplete){
+                HallwayGame h = new HallwayGame(this);
+                h.run();
+            }
+        }
+
+        // HALLWAY GAME
+        x = p.getX();
+        y = p.getY();
+        if (MainMenu.getIsHallwayGame()){
+            if ((x > 56 && x < 155) && (y > 128 && y < 234) && !HallwayGame.items.contains("dog")){
+                HallwayGame.items.add("dog");
+            }
+            if ((x > 199 && x < 268) && (y > 127 && y < 237)&& !HallwayGame.items.contains("notebook")){
+                HallwayGame.items.add("notebook");
+            }
+            if ((x > 313 && x < 367) && (y > 132 && y < 219)&& !HallwayGame.items.contains("headphones")){
+                HallwayGame.items.add("headphones");
+            }
+            if ((x > 413 && x < 493) && (y > 148 && y < 214)&& !HallwayGame.items.contains("textbooks")){
+                HallwayGame.items.add("textbooks");
+            }
+            if ((x > 545 && x < 646) && (y > 151 && y < 218)&& !HallwayGame.items.contains("pencilCase")){
+                HallwayGame.items.add("pencilCase");
+            }
+            if ((x > 325 && x < 417) && (y > 262 && y < 329)&& !HallwayGame.items.contains("videoGame")){
+                HallwayGame.items.add("videoGame");
+            }
+            if ((x > 502 && x < 543) && (y > 247 && y < 326)&& !HallwayGame.items.contains("water")){
+                HallwayGame.items.add("water");
+            }
+            if (HallwayGame.checkWin() && HallwayGame.items.size() == 4){
+                MainMenu.setIsHallwayGame(false);
+                EscapeMap.isHallComplete = true;
+                EscapeMap m = new EscapeMap(this);
+                m.run();
+            }
+            else{
+            System.out.println(HallwayGame.items);
+            HallwayGame h = new HallwayGame(this);
+            h.run();
+            }
         }
     }
 
@@ -442,7 +493,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
     }
     @Override
     public void mouseReleased(MouseEvent e) {
-
+        // MEET THE PERSON
         if (MainMenu.getIsMeetPerson()) {
             Point p = MouseInfo.getPointerInfo().getLocation();
             SwingUtilities.convertPointFromScreen(p, e.getComponent());
@@ -463,6 +514,35 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             // MeetThePerson m = new MeetThePerson(this);
             // m.run();
         }
+
+        // TAKE NOTES
+        if (MainMenu.getIsTakeNotes()) {
+            Point p = MouseInfo.getPointerInfo().getLocation();
+            SwingUtilities.convertPointFromScreen(p, e.getComponent());
+            double x = p.getX();
+            double y = p.getY() - 25;
+            
+            if (TakeNotes.stage == 1 || TakeNotes.stage == 5) {
+                if(x > 300 && x < 500 && y > 420 && y < 480){
+                   TakeNotes.stage++;
+                }
+                
+            } else if (x > 100 && x < 700 && y > 100 && y < 200) {
+                TakeNotes.stage++;
+                TakeNotes.score++;  
+            } else if (x > 100 && x < 700 && y > 300 && y < 400) {
+                TakeNotes.stage++;
+            }
+            try {
+                Robot robot = new Robot();
+                robot.keyPress(KeyEvent.VK_M);
+            } catch (Exception d) {
+                System.out.println("robot error");
+            }
+            TakeNotes m = new TakeNotes(this);
+            m.run();
+        }
+
     }
 
     @Override

@@ -5,6 +5,8 @@ public class Driver {
         frame.setSize(800, 500);
         MainMenu m = new MainMenu(frame);
         m.run();
+        // TakeNotes n = new TakeNotes(frame);
+        // n.run();
         // LibraryGame l = new LibraryGame(frame);
         // l.run();
     }
