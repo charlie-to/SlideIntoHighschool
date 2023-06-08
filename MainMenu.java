@@ -21,7 +21,7 @@ public class MainMenu{
     private static boolean isLibraryGame;
     private static boolean isHallwayGame;
     private static boolean isTakeNotes;
-
+    private static boolean isTalkToTeacher;
     public MainMenu(JFrame frame){
         this.frame = frame;
         isInstruction = false;
@@ -196,6 +196,12 @@ public class MainMenu{
     }
     public static void setIsTakeNotes(boolean onTakeNotes){
         isTakeNotes = onTakeNotes;
+    }
+    public static boolean getIsTalkToTeacher(){
+        return isTalkToTeacher;
+    }
+    public static void setIsTalkToTeacher(boolean onTalkToTeacher){
+        isTalkToTeacher = onTalkToTeacher;
     }
 
 }

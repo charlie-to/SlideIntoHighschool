@@ -8,6 +8,7 @@ public class EscapeMap {
     JFrame frame;
     public static String text = "Exit";
     public static boolean isHallComplete = false;
+    public static boolean isTakeNotesComplete = false;
     public EscapeMap(JFrame frame) {
         this.frame = frame;
         // Clear the frame

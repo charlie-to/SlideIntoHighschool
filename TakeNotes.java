@@ -1,4 +1,3 @@
-import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
 
@@ -58,23 +57,27 @@ public class TakeNotes {
 
             g.setColor(Color.WHITE);
             g.setFont(new Font("Roboto", Font.PLAIN, 15));
-            g.drawString("Continue", 330, 470);
+            g.drawString("Continue", 330, 450);
          } else if (stage == 2) {
             g.setColor(Colours.backgroundBlue);
             g.fillRect(100,200,600,100);
             g.setFont(new Font("Roboto", Font.PLAIN, 20));
             g.drawString("Animal cells -> surrounded by cell membrane", 200, 180);
-            g.drawString("Animal cells -> surrounded by plastic", 200, 180);
+            g.drawString("Animal cells -> surrounded by plastic", 200, 380);
          
          } else if (stage == 3) {
+            g.setColor(Colours.backgroundBlue);
+            g.fillRect(100,200,600,100);
             g.setFont(new Font("Roboto", Font.PLAIN, 20));
             g.drawString("Contains nucleus and DNA", 200, 180);
-            g.drawString("Contains nucluis and NBA", 200, 180);
+            g.drawString("Contains nucluis and NBA", 200, 380);
          
          } else if (stage == 4) {
+            g.setColor(Colours.backgroundBlue);
+            g.fillRect(100,200,600,100);
             g.setFont(new Font("Roboto", Font.PLAIN, 20));
             g.drawString("Fundamental unit of life", 200, 180);
-            g.drawString("Fundamental unit of construction", 200, 180);
+            g.drawString("Fundamental unit of construction", 200, 380);
          
          }else if (stage == 5) {
             g.setColor(Color.BLACK);
@@ -95,7 +98,7 @@ public class TakeNotes {
 
             g.setColor(Color.WHITE);
             g.setFont(new Font("Roboto", Font.PLAIN, 15));
-            g.drawString("Continue", 330, 470);
+            g.drawString("Continue", 330, 450);
          
          }else {
             System.out.println("done");
