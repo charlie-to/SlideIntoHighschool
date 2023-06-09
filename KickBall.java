@@ -3,6 +3,18 @@ import java.awt.*;
 import javax.swing.*;
 
 public class KickBall {
+
+/**
+ * KickBall class of Slide Into Highschool, creates KickBall game 
+ *
+ * <h2>Course Info:</h2>
+ * ICS4UP with Krasteva, V.
+ * Date: June 7th, 2023
+ * Time Spent: 1 hrs
+ * @version 1
+ * @author Charlie To, Milena Mofrad
+ */
+ 
    JFrame frame;
    public static int x=0;
    public static int y = 0;
@@ -12,6 +24,13 @@ public class KickBall {
    public static int score =0;
    public static boolean isComplete = false;
 
+
+     
+   /**
+     * Constructor method
+     *
+     * @param frame Takes JGrasp frame
+     */
    public KickBall(JFrame frame) {
       this.frame = frame;
       // frame.addMouseListener(new ClickHandler());
@@ -44,6 +63,9 @@ public class KickBall {
          g.setColor(Color.WHITE);
          g.setFont(new Font("Roboto", Font.PLAIN, 50));
          g.drawString("KICK THE BALL", 200, 70);
+         g.setColor(Color.WHITE);
+         g.setFont(new Font("Roboto", Font.PLAIN, 20));
+         g.drawString("Click inside the goal to kick", 200, 140);
          
 
 

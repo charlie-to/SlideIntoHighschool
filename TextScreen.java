@@ -1,9 +1,27 @@
+
 import java.awt.*;
 import javax.swing.*;
 
 public class TextScreen {
+/**
+ * TextScreen class of Slide Into Highschool, creates the text screens for learning stage
+ *
+ * <h2>Course Info:</h2>
+ * ICS4UP with Krasteva, V.
+ * Date: June 6th, 2023
+ * Time Spent: 0.5 hrs
+ * @version 1
+ * @author Charlie To, Milena Mofrad
+ */
     JFrame frame;
     String text;
+    
+     
+   /**
+     * Constructor method
+     *
+     * @param frame Takes JGrasp frame
+     */
     public TextScreen(JFrame frame, String text){
         this.frame = frame;
         this.text = text;

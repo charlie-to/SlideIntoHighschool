@@ -3,6 +3,18 @@ import java.awt.*;
 import javax.swing.*;
 
 public class LibraryGame {
+
+/**
+ * LibraryGame class of Slide Into Highschool, creates the library game for the escape stage of game
+ *
+ * <h2>Course Info:</h2>
+ * ICS4UP with Krasteva, V.
+ * Date: June 7th, 2023
+ * Time Spent: 2 hrs
+ * @version 1
+ * @author Charlie To, Milena Mofrad
+ */
+ 
    JFrame frame;
    public static int x=0;
    public static int y = 0;
@@ -14,6 +26,11 @@ public class LibraryGame {
    public static boolean[] books= new boolean[6];
    public static boolean isComplete = false;
 
+   /**
+     * Constructor method
+     *
+     * @param frame Takes JGrasp frame
+     */
    public LibraryGame(JFrame frame) {
       this.frame = frame;
       x1 = 120;

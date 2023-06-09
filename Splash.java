@@ -8,7 +8,26 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Splash {
+
+/**
+ * Splash class of Slide Into Highschool, creates splashscreen that is animated
+ *
+ * <h2>Course Info:</h2>
+ * ICS4UP with Krasteva, V.
+ * Date: June 8th, 2023
+ * Time Spent: 0.5 hrs
+ * @version 1
+ * @author Charlie To, Milena Mofrad
+ */
+ 
     JFrame frame;
+    
+     
+   /**
+     * Constructor method
+     *
+     * @param frame Takes JGrasp frame
+     */
     public Splash(JFrame fr) {
       this.frame = fr;
       this.frame.revalidate();
@@ -38,6 +57,9 @@ public class Splash {
          
         */
          
+        /** 
+         * MyPane method, starts timer
+         */
         public MyPane() {
             timer = new Timer(10, new ActionListener() {
                 @Override
@@ -49,6 +71,9 @@ public class Splash {
             timer.start();
         }
 
+         /**
+          * Changes variables
+          */
         protected void move() {
             x++;
             y--;

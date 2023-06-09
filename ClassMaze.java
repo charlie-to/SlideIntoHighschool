@@ -4,15 +4,23 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 /**
- * @author Charlie To
+ * ClassMaze class of Slide Into Highschool, creates maze for maze stage of game
+ *
+ * <h2>Course Info:</h2>
+ * ICS4UP with Krasteva, V.
  * Date: June 1st, 2023
- * Time Spent: 1 hr
- * Version #: 1
+ * Time Spent: 2 hrs
+ * @version 1
+ * @author Charlie To, Milena Mofrad
  */
 public class ClassMaze {
+    /** frame variable*/
     JFrame frame;
+    /** holds red color*/
     Color lightRed = new Color(244, 204, 204);
+    /** holds green color*/
     Color green = new Color(106, 168, 79);
+    /** holds boolean array for the maze*/
     static boolean[][] maze = {{false, true, true,true,true,false,true,true,true,true,false, false, false, false},
                         {false, true, false, false, true, false, true, false, false, true,true,true,true,true},
                         {false, true,true,true,true,false, true, false, false, false, true, false, false, false},
@@ -21,22 +29,36 @@ public class ClassMaze {
                         {false, true, false, false,true,true,true,false,true,false,true,false,false,true},
                         {false, true, false, false,true,false,false,false,true,false,true,false,false,true,},
                         {false,true,true,true,true,false,false,false,true,false,true,true,true,true}};
+    /** holds the starting x position for the maze*/
     public static int startX = 13;
+    /** holds the starting y position for the maze*/
     public static int startY = 1;
+    /** holds the ending x position for the maze*/
     public static int endX=0;
+    /** holds the ending y position for the maze*/
     public static int endY=4;
+    /** holds the current x position for the maze*/
     public static int curX = startX;
+    /** holds the current position for the maze*/
     public static int curY = startY;
-
+    /** holds the lock x position*/
     public static int lockX=9;
+    /** holds the y position */
     public static int lockY=1;
-
+    /** holds the map x position*/
     public static int mapX=6;
+    /** holds the map y position*/
     public static int mapY=4;
-
+    /** holds the meet x position*/
     public static int meetX = 2;
+    /** holds the meet y position*/
     public static int meetY = 7;
 
+   /**
+     * Constructor method
+     *
+     * @param frame takes JFrame
+     */
     public ClassMaze(JFrame frame) {
         this.frame = frame;
         // Clear the frame
@@ -118,15 +140,24 @@ public class ClassMaze {
         frame.setVisible(true);
     }
     //MAZE VARIABLES
+    /** holds the maze start x position*/
     int mazeStartX = 110;
+    /** holds the maze start y position*/
     int mazeStartY = 60;
+    /** holds the maze width*/
     static int width = 40;
+    /** holds the maze height*/
     static int height = 40;
+    /** holds the maze border width*/
     int borderW = 5;
+    /** holds the maze border height*/
     int borderH = 5;
     //CHARACTER VARIABLES
+    /** holds the character size*/
     static int charSize = 30;  // width and height of character circle
+    /** holds the current character x position*/
     public static int curCharX = 634;
+    /** holds the cureent character y position*/
     public static int curCharY = 144;
     class Drawing extends JComponent {
         public void paint(Graphics g) {

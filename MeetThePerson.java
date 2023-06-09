@@ -2,6 +2,18 @@ import java.awt.*;
 import javax.swing.*;
 
 public class MeetThePerson {
+
+/**
+ * MeetThePerson class of Slide Into Highschool, creates the meet the person game for the maze stage
+ *
+ * <h2>Course Info:</h2>
+ * ICS4UP with Krasteva, V.
+ * Date: June 7ht, 2023
+ * Time Spent: 2.5 hrs
+ * @version 1
+ * @author Charlie To, Milena Mofrad
+ */
+ 
    JFrame frame;
    public static int x=0;
    public static int y = 0;
@@ -13,6 +25,11 @@ public class MeetThePerson {
    public static boolean hover2 = false;
    public static boolean isComplete = false;
 
+   /**
+     * Constructor method
+     *
+     * @param frame Takes JGrasp frame
+     */
    public MeetThePerson(JFrame frame) {
       this.frame = frame;
       // frame.addMouseListener(new ClickHandler());

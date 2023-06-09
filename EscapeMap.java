@@ -3,15 +3,38 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-
+/**
+ * EscapeMap class of Slide Into Highschool, Map for Escape stage of game
+ *
+ * <h2>Course Info:</h2>
+ * ICS4UP with Krasteva, V.
+ * Date: June 6st, 2023
+ * Time Spent: 2.5 hrs
+ * @version 1
+ * @author Charlie To, Milena Mofrad
+ */
 public class EscapeMap {
+
+    /** frame variable*/
     JFrame frame;
+    /** text variable for exit button*/
     public static String text = "Exit";
+    /** checks if the hall level is complete*/
     public static boolean isHallComplete = false;
+    /** checks if the take notes level is complete*/
     public static boolean isTakeNotesComplete = false;
+    /** checks if the talk to teacher level is complete*/
     public static boolean isTalkToTeacherComplete = false;
+    /** checks if the kick the ball level is complete*/
     public static boolean isKickBallComplete = false;
+    /** check is the library game is complete*/
     public static boolean isLibraryGameComplete = false;
+    
+    /**
+     * Constructor method
+     *
+     * @param frame Takes frame from driver
+     */
     public EscapeMap(JFrame frame) {
         this.frame = frame;
         // Clear the frame
@@ -21,15 +44,34 @@ public class EscapeMap {
         this.frame.repaint();
         MainMenu.setIsEscapeMap(true);
     }
+    
+    /**
+     * run method
+     *
+     */
     public void run(){
         ImageIcon map = new ImageIcon("images/map.png", "image of map");
         frame.add(new JLabel(map));
         frame.getContentPane().add(new Drawing());
         frame.setVisible(true);
     }
+    
+    /** holds the x position*/
     public static int xPos = 640;
+    /** holds the y position */
     public static int yPos = 170;
+    
+    /**
+     * Drawing class
+     *
+     */
     class Drawing extends JComponent {
+    
+     /**
+     * paint method
+     *
+     * @param g Takes Graphics class
+     */
         public void paint(Graphics g) {
             super.paintComponent(g);
             // BACKGROUND MAP

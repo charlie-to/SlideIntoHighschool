@@ -3,8 +3,25 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Instructions {
+
+/**
+ * Instructions class of Slide Into Highschool, gives instructions for game
+ *
+ * <h2>Course Info:</h2>
+ * ICS4UP with Krasteva, V.
+ * Date: June 5st, 2023
+ * Time Spent: 0.5 hrs
+ * @version 1
+ * @author Charlie To, Milena Mofrad
+ */
+ 
     JFrame frame;
 
+   /**
+     * Constructor method
+     *
+     * @param frame Takes JGrasp frame
+     */
     public Instructions(JFrame frame) {
         this.frame = frame;
         // Clear the frame
@@ -15,7 +32,9 @@ public class Instructions {
 
         MainMenu.setIsInstruction(true);
     }
-
+    /**
+     * runs instructions
+     */
     public void run() {
         frame.setLayout(new BorderLayout());
         frame.getContentPane().add(new Drawing());
@@ -32,7 +51,6 @@ public class Instructions {
             }
         });
     }
-
     class Drawing extends JComponent {
         public void paint(Graphics g) {
             super.paintComponent(g);

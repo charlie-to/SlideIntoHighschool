@@ -1,7 +1,20 @@
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
+
 public class Map {
+
+/**
+ * Map class of Slide Into Highschool, creates map game for maze stage
+ *
+ * <h2>Course Info:</h2>
+ * ICS4UP with Krasteva, V.
+ * Date: June 7th, 2023
+ * Time Spent: 2 hrs
+ * @version 1
+ * @author Charlie To, Milena Mofrad
+ */
+ 
    JFrame frame;
    public static int x =0;
    public static int y=0;
@@ -11,6 +24,13 @@ public class Map {
    public static int selected = 0;
    public static boolean[] found = new boolean[] { false, false, false, false };
    public static boolean win;
+   
+     
+   /**
+     * Constructor method
+     *
+     * @param frame Takes JGrasp frame
+     */
    public Map(JFrame frame) {
       this.frame = frame;
       // frame.addMouseListener(new ClickHandler());
@@ -22,6 +42,11 @@ public class Map {
       MainMenu.setIsMap(true);
    }
 
+   /**
+     * checkWin method, checks if game is won
+     *
+     * @return boolean Whether game is won or not
+     */
    public static boolean checkWin() {
       if (found[0] && found[1] && found[2] && found[3])
       {

@@ -1,9 +1,25 @@
+
 import java.awt.*;
 import javax.swing.*;
 
 public class Congrats {
+
+/**
+ * Congrats class of Slide Into Highschool, shows congratulations message for games
+ *
+ * <h2>Course Info:</h2>
+ * ICS4UP with Krasteva, V.
+ * Date: June 5st, 2023
+ * Time Spent: 0.5 hrs
+ * @version 1
+ * @author Charlie To, Milena Mofrad
+ */
+ 
+    /** Holds the frame*/
     JFrame frame;
+    /** Holds the text for congratulations screen*/
     String text;
+    /** Holds the text for congratulations screen*/
     String text2 = "press space to continue";
     public Congrats(JFrame frame, String text){
         this.frame = frame;
@@ -15,6 +31,13 @@ public class Congrats {
         this.frame.repaint();
         MainMenu.setIsCongrats(true);
     }
+    
+    /**
+     * Constructor method
+     *
+     * @param frame, text, text2, takes frames and texts to display
+     * @return name Function
+     */
     public Congrats(JFrame frame, String text, String text2){
         this.frame = frame;
         this.text = text;

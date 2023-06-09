@@ -1,8 +1,22 @@
+
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
 
 public class TalkToTeacher {
+
+/**
+ * TalkToTeacher class of Slide Into Highschool, creates the talk to teacher game fro the escape stage
+ *
+ * <h2>Course Info:</h2>
+ * ICS4UP with Krasteva, V.
+ * Date: June 8th, 2023
+ * Time Spent: 3 hrs
+ * @version 1
+ * @author Charlie To, Milena Mofrad
+ */
+
+
    JFrame frame;
    public static int x=0;
    public static int y = 0;
@@ -14,6 +28,12 @@ public class TalkToTeacher {
    public static boolean hover2 = false;
    public static boolean isComplete = false;
 
+     
+   /**
+     * Constructor method
+     *
+     * @param frame Takes JGrasp frame
+     */
    public TalkToTeacher(JFrame frame) {
       this.frame = frame;
       // frame.addMouseListener(new ClickHandler());

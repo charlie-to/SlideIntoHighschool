@@ -6,9 +6,29 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class HallwayGame {
+
+/**
+ * HallwayGame class of Slide Into Highschool, Creates hallway game
+ *
+ * <h2>Course Info:</h2>
+ * ICS4UP with Krasteva, V.
+ * Date: June 4st, 2023
+ * Time Spent: 1 hrs
+ * @version 1
+ * @author Charlie To, Milena Mofrad
+ */
+ 
     JFrame frame;
     public static ArrayList<String> items = new ArrayList<String>(4);
 
+   
+     
+     
+   /**
+     * Constructor method
+     *
+     * @param frame Takes JGrasp frame
+     */
     public HallwayGame(JFrame frame) {
         this.frame = frame;
         Container contentPane = frame.getContentPane();
@@ -18,6 +38,11 @@ public class HallwayGame {
         MainMenu.setIsHallwayGame(true);
     }
 
+    /**
+     * checkWin method, checks if game is won
+     *
+     * @return boolean If game is won
+     */
     public static boolean checkWin() {
         for (String i : items) {
             if (i.equals("videoGame") || i.equals("dog") || i.equals("headphones")) {
@@ -26,7 +51,9 @@ public class HallwayGame {
         }
         return true;
     }
-
+    /**
+     * runs the hallway game
+     */
     public void run() {
         frame.getContentPane().add(new Drawing());
         frame.setVisible(true);

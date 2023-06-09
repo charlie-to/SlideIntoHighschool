@@ -1,7 +1,21 @@
+
+
 import java.awt.*;
 import javax.swing.*;
 
 public class TakeNotes {
+
+/**
+ * TakeNotes class of Slide Into Highschool, creates the Take Notes game for the escape stage of game
+ *
+ * <h2>Course Info:</h2>
+ * ICS4UP with Krasteva, V.
+ * Date: June 7th, 2023
+ * Time Spent: 3 hrs
+ * @version 1
+ * @author Charlie To, Milena Mofrad
+ */
+ 
    JFrame frame;
    public static int x=0;
    public static int y = 0;
@@ -11,7 +25,12 @@ public class TakeNotes {
    public static int score =0;
    public static boolean isComplete = false;
    public static boolean win = false;
-
+     
+   /**
+     * Constructor method
+     *
+     * @param frame Takes JGrasp frame
+     */
    public TakeNotes(JFrame frame) {
       this.frame = frame;
       // frame.addMouseListener(new ClickHandler());

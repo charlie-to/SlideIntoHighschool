@@ -1,0 +1,55 @@
+
+
+Version:	3.50
+CmdLine:	C:\Users\Charlotte\OneDrive\Coding\Ics12\Culminating\SlideIntoHighschool\SlideIntoHighschool.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Users\Charlotte\OneDrive\Coding\Ics12\Culminating\SlideIntoHighschool\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	1.018.000
+Java max ver:	
+Substitute:	JAVA_HOME = C:\Users\Charlotte\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.4.101-hotspot\
+Substitute:	PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Users\Charlotte\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.4.101-hotspot\bin;C:\Ruby27-x64\bin;C:\Ruby30-x64\bin;C:\Users\Charlotte\AppData\Local\Microsoft\WindowsApps;;C:\Users\Charlotte\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Charlotte\AppData\Roaming\npm;C:\Program Files (x86)\GitHub CLI\;C:\Users\Charlotte\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.4.101-hotspot\\bin
+JRE paths:	C:\Users\Charlotte\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.4.101-hotspot\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Users\Charlotte\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.4.101-hotspot\bin;C:\Ruby27-x64\bin;C:\Ruby30-x64\bin;C:\Users\Charlotte\AppData\Local\Microsoft\WindowsApps;;C:\Users\Charlotte\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Charlotte\AppData\Roaming\npm;C:\Program Files (x86)\GitHub CLI\;C:\Users\Charlotte\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.4.101-hotspot\\bin
+Check launcher:	C:\Users\Charlotte\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.4.101-hotspot\bin\javaw.exe (OK)
+Warning:	formatJavaVersion() too many parts added.
+Version string: 1.017.000_004 / 64-Bit (Ignore)
+Check launcher:	C:\Program Files\Common Files\Oracle\Java\javapath\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\Common Files\Oracle\Java\javapath\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\system32\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\System32\Wbem\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\System32\WindowsPowerShell\v1.0\bin\javaw.exe (not found)
+Check launcher:	C:\Windows\System32\OpenSSH\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\nodejs\bin\javaw.exe (not found)
+Check launcher:	C:\ProgramData\chocolatey\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Git\cmd\bin\javaw.exe (not found)
+Check launcher:	C:\Users\Charlotte\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.4.101-hotspot\bin\javaw.exe (OK)
+Warning:	formatJavaVersion() too many parts added.
+Version string: 1.017.000_004 / 64-Bit (Ignore)
+Check launcher:	C:\Ruby27-x64\bin\javaw.exe (not found)
+Check launcher:	C:\Ruby30-x64\bin\javaw.exe (not found)
+Check launcher:	C:\Users\Charlotte\AppData\Local\Microsoft\WindowsApps\bin\javaw.exe (not found)
+Check launcher:	C:\Users\Charlotte\AppData\Local\Programs\Microsoft VS Code\bin\javaw.exe (not found)
+Check launcher:	C:\Users\Charlotte\AppData\Roaming\npm\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\GitHub CLI\bin\javaw.exe (not found)
+Check launcher:	C:\Users\Charlotte\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.4.101-hotspot\bin\javaw.exe (OK)
+Warning:	formatJavaVersion() too many parts added.
+Version string: 1.017.000_004 / 64-Bit (Ignore)
+64-bit search:	SOFTWARE\JavaSoft\Java Runtime Environment...
+32-bit search:	SOFTWARE\JavaSoft\Java Runtime Environment...
+64-bit search:	SOFTWARE\JavaSoft\Java Development Kit...
+32-bit search:	SOFTWARE\JavaSoft\Java Development Kit...
+64-bit search:	SOFTWARE\JavaSoft\JRE...
+32-bit search:	SOFTWARE\JavaSoft\JRE...
+64-bit search:	SOFTWARE\JavaSoft\JDK...
+Check:		SOFTWARE\JavaSoft\JDK\20.0.1
+Version string: 1.020.000_001 / 64-Bit (OK)
+Check launcher:	C:\Program Files\Java\jdk-20\bin\javaw.exe (OK)
+Match:		1.020.000_001
+Runtime used:	1.020.000_001 (64-bit)
+Launcher:	C:\Program Files\Java\jdk-20\bin\javaw.exe
+Launcher args:	-jar "C:\Users\Charlotte\OneDrive\Coding\Ics12\Culminating\SlideIntoHighschool\SlideIntoHighschool.exe"
+Args length:	103/32768 chars
+Exit code:	0

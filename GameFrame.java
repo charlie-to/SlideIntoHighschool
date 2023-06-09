@@ -3,8 +3,24 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
-
+/**
+ * GameFrame class of Slide Into Highschool, resets variables, takes input, and controls flow of game
+ *
+ * <h2>Course Info:</h2>
+ * ICS4UP with Krasteva, V.
+ * Date: June 5st, 2023
+ * Time Spent: 10 hrs
+ * @version 1
+ * @author Charlie To, Milena Mofrad
+ */
 public class GameFrame extends JFrame implements KeyListener, MouseListener {
+
+ 
+    /**
+     * Constructor method
+     *
+     * @param title Sets title for frame
+     */
     public GameFrame(String title) {
         super(title);
         setFocusable(true);
@@ -12,6 +28,10 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         addMouseListener(this);
     }
 
+     /**
+     * resetMinigameVars method, resets all variables for minigames
+     *
+     */
     public static void resetMinigameVars() {
         // LOCK GAME
         Lock.degrees = 0;
@@ -78,6 +98,10 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         LibraryGame.isComplete = false;
     }
 
+   /**
+     * resetLevelVars method, resets all variables for levels
+     *
+     */
     public static void resetLevelVars() {
         // ESCAPE MAP
         EscapeMap.text = "Exit";
@@ -92,6 +116,11 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         ClassMaze.curY = ClassMaze.startY;
     }
 
+   /**
+     * keyTyped method, takes key input
+     *
+     * @param e Takes key input
+     */
     @Override
     public void keyTyped(KeyEvent e) {
         if (MainMenu.getIsCongrats() && EscapeMap.isHallComplete && EscapeMap.isTakeNotesComplete
@@ -352,6 +381,11 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         }
     }
 
+   /**
+     * keyPressed method, takes key input
+     *
+     * @param e Function
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         if (ClassMaze.checkWinner() && MainMenu.getIsCongrats()) {
@@ -364,10 +398,21 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         
     }
 
+   /**
+     * keyReleased method, takes key input
+     *
+     * @param e Takes key input
+     */
     @Override
     public void keyReleased(KeyEvent e) {
     }
 
+     
+     /**
+     * keyReleased method, takes key input
+     *
+     * @param e Takes key input
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         Point p = MouseInfo.getPointerInfo().getLocation();
@@ -556,7 +601,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                 KickBall k = new KickBall(this);
                 k.run();
             }
-            if ((x > 88 && x < 294) && (y > 392 && y < 460) && !EscapeMap.isKickBallComplete
+            if ((x > 88 && x < 294) && (y > 392 && y < 460) && !EscapeMap.isLibraryGameComplete
                     && EscapeMap.text.equals("Library Game")) {
                 LibraryGame l = new LibraryGame(this);
                 l.run();
@@ -608,6 +653,11 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         }
     }
 
+   /**
+     * mousePressed method, takes mouse input
+     *
+     * @param e Takes mouse input
+     */
     @Override
     public void mousePressed(MouseEvent e) {
         if (MainMenu.getIsMeetPerson()) {
@@ -735,6 +785,11 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         }
     }
 
+   /**
+     * mouseReleased method, takes mouse input
+     *
+     * @param e Takes mouse input
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
         // // DELETE
@@ -884,11 +939,23 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         }
 
     }
-
+   
+   /**
+     * mouseEntered method, takes mouse input
+     *
+     * @param e Takes mouse input
+     */
+     
+     
     @Override
     public void mouseEntered(MouseEvent e) {
     }
 
+   /**
+     * mouseEntered method, takes mouse input
+     *
+     * @param e Takes mouse input
+     */
     @Override
     public void mouseExited(MouseEvent e) {
     }

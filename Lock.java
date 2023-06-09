@@ -5,11 +5,29 @@ import javax.swing.*;
 import java.awt.*;
 // COMBO = 10, 35, 30
 public class Lock {
+
+/**
+ * Lock class of Slide Into Highschool, creates the lock game for the maze stage of the game
+ *
+ * <h2>Course Info:</h2>
+ * ICS4UP with Krasteva, V.
+ * Date: June 4st, 2023
+ * Time Spent: 2 hrs
+ * @version 1
+ * @author Charlie To, Milena Mofrad
+ */
+ 
     JFrame frame;
     public static int degrees = 0;
     public static ArrayList<String> turns = new ArrayList<String>();
     public static int curNum;
 
+
+      /**
+     * checkWinner method, checks for a win
+     *
+     * @return boolean Whether the game is won or not
+     */
     public static boolean checkWinner(){
         String[] winCombo = { "up", "up", "up", "up", "up", "up", "up", "down", "down", "down", "down", "down", "down", "down", "down", "down","down","down"};
         if (curNum == 30 && turns.size() > 18+1){
@@ -27,7 +45,12 @@ public class Lock {
         }
         return false;
     }
-    
+     
+   /**
+     * Constructor method
+     *
+     * @param frame Takes JGrasp frame
+     */
     public Lock(JFrame frame) {
         this.frame = frame;
         // Clear the frame

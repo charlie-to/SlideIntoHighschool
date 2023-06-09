@@ -1,7 +1,19 @@
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * Splashscreen class Slide Into Highschool, runs the animated splash screen
+ *
+ * <h2>Course Info:</h2>
+ * ICS4UP with Krasteva, V.
+ * Date: June 8th, 2023
+ * Time Spent: 4 hrs
+ * @version 1
+ * @author Charlie To, Milena Mofrad
+ */
 public class SplashScreen {
+   /**
+    * Constructor method
+    */
    public SplashScreen() {
       JFrame frame = new JFrame("Slide Into Highschool");
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
