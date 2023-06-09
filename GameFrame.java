@@ -34,11 +34,11 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         MeetThePerson.hover2 = false;
         MeetThePerson.isComplete = false;
         // MAP GAME
-        Map.x =0;
-        Map.y=0;
-        Map.xPos =0;
-        Map.yPos=0;
-        Map.stage =1;
+        Map.x = 0;
+        Map.y = 0;
+        Map.xPos = 0;
+        Map.yPos = 0;
+        Map.stage = 1;
         Map.selected = 0;
         Map.found = new boolean[] { false, false, false, false };
         Map.win = false;
@@ -64,70 +64,47 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         TalkToTeacher.hover2 = false;
         TalkToTeacher.isComplete = false;
         // LIBRARY GAME
-        LibraryGame.x=0;
+        LibraryGame.x = 0;
         LibraryGame.y = 0;
         LibraryGame.xPos = 0;
-        LibraryGame.yPos =0;
-        LibraryGame.stage =1;
-        LibraryGame.score =0;
+        LibraryGame.yPos = 0;
+        LibraryGame.stage = 1;
+        LibraryGame.score = 0;
         LibraryGame.x1 = 0;
         LibraryGame.x2 = 0;
         LibraryGame.y1 = 0;
         LibraryGame.y2 = 0;
-        LibraryGame.books= new boolean[6];
+        LibraryGame.books = new boolean[6];
         LibraryGame.isComplete = false;
     }
-    public static void resetAllVars() {
-        // LOCK GAME
-        Lock.degrees = 0;
-        Lock.turns = new ArrayList<String>();
-        Lock.curNum = 0;
-        // MainMenu.setIsLock(false);
-        // MAZE GAME
-        ClassMaze.curCharX = 634;
-        ClassMaze.curCharY = 144;
-        ClassMaze.curX = ClassMaze.startX;
-        ClassMaze.curY = ClassMaze.startY;
-        // MEET THE PERSON
-        MeetThePerson.x = 0;
-        MeetThePerson.y = 0;
-        MeetThePerson.xPos = 0;
-        MeetThePerson.yPos = 0;
-        MeetThePerson.score = 0;
-        MeetThePerson.stage = 1;
-        MeetThePerson.hover1 = false;
-        MeetThePerson.hover2 = false;
-        MeetThePerson.isComplete = false;
-        // ESCAPE MAZE
-        // EscapeMap.text = "Exit";
-        // EscapeMap.isHallComplete = false;
-        // HALLWAY GAME
-        HallwayGame.items = new ArrayList<String>(4);
-        // TAKE NOES
-        TakeNotes.x = 0;
-        TakeNotes.y = 0;
-        TakeNotes.xPos = 0;
-        TakeNotes.yPos = 0;
-        TakeNotes.stage = 1;
-        TakeNotes.score = 0;
-        TakeNotes.isComplete = false;
-        TakeNotes.win = false;
-        // TALK TO TEACHER
-        TalkToTeacher.x = 0;
-        TalkToTeacher.y = 0;
-        TalkToTeacher.xPos = 0;
-        TalkToTeacher.yPos = 0;
-        TalkToTeacher.stage = 1;
-        TalkToTeacher.score = 0;
-        TalkToTeacher.hover1 = false;
-        TalkToTeacher.hover2 = false;
-        TalkToTeacher.isComplete = false;
+
+    public static void resetLevelVars() {
+        // ESCAPE MAP
+        EscapeMap.text = "Exit";
+        EscapeMap.isHallComplete = false;
+        EscapeMap.isTakeNotesComplete = false;
+        EscapeMap.isTalkToTeacherComplete = false;
+        EscapeMap.isKickBallComplete = false;
+        EscapeMap.isLibraryGameComplete = false;
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
+        if (MainMenu.getIsCongrats() && EscapeMap.isHallComplete && EscapeMap.isTakeNotesComplete
+                && EscapeMap.isTalkToTeacherComplete && EscapeMap.isKickBallComplete
+                && EscapeMap.isLibraryGameComplete) {
+            MainMenu.setIsTextScreen(false);
+            resetLevelVars();
+            MainMenu m = new MainMenu(this);
+            m.run();
+        } else if (EscapeMap.isHallComplete && EscapeMap.isTakeNotesComplete && EscapeMap.isTalkToTeacherComplete
+                && EscapeMap.isKickBallComplete && EscapeMap.isLibraryGameComplete) {
+            MainMenu.setIsEscapeMap(false);
+            Congrats c = new Congrats(this, "You have completed the escape level", "Press any key to go to main menu");
+            c.run();
+        }
         // CONGRATS SCREEN
-        if (MainMenu.getIsCongrats()) {
+        else if (MainMenu.getIsCongrats()) {
             MainMenu.setIsCongrats(false);
             MainMenu m = new MainMenu(this);
             m.run();
@@ -188,25 +165,29 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             }
         }
         // MAZE
-        if (e.getKeyChar() == 'w' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen()&& !MainMenu.getIsLock() && !MainMenu.getIsMap()) {
+        if (e.getKeyChar() == 'w' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen() && !MainMenu.getIsLock()
+                && !MainMenu.getIsMap()) {
             resetMinigameVars();
             ClassMaze.move("up");
             ClassMaze cm = new ClassMaze(this);
             cm.run();
         }
-        if (e.getKeyChar() == 's' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen()&& !MainMenu.getIsLock() && !MainMenu.getIsMap()) {
+        if (e.getKeyChar() == 's' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen() && !MainMenu.getIsLock()
+                && !MainMenu.getIsMap()) {
             resetMinigameVars();
             ClassMaze.move("down");
             ClassMaze cm = new ClassMaze(this);
             cm.run();
         }
-        if (e.getKeyChar() == 'a' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen()&& !MainMenu.getIsLock() && !MainMenu.getIsMap()) {
+        if (e.getKeyChar() == 'a' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen() && !MainMenu.getIsLock()
+                && !MainMenu.getIsMap()) {
             resetMinigameVars();
             ClassMaze.move("left");
             ClassMaze cm = new ClassMaze(this);
             cm.run();
         }
-        if (e.getKeyChar() == 'd' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen()&& !MainMenu.getIsLock() && !MainMenu.getIsMap()) {
+        if (e.getKeyChar() == 'd' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen() && !MainMenu.getIsLock()
+                && !MainMenu.getIsMap()) {
             resetMinigameVars();
             ClassMaze.move("right");
             ClassMaze cm = new ClassMaze(this);
@@ -307,31 +288,33 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         }
 
         // ESCAPE MAP
-        if (MainMenu.getIsEscapeMap() && !MainMenu.getIsHallwayGame() && !MainMenu.getIsKickBall()&& !MainMenu.getIsTalkToTeacher()&& !MainMenu.getIsTakeNotes() && !MainMenu.getIsLibraryGame()){
-        int moveAmt = 5;
-        if (e.getKeyChar() == 's' && MainMenu.getIsEscapeMap()) {
-            EscapeMap.yPos += moveAmt;
-            EscapeMap m = new EscapeMap(this);
-            m.run();
-        }
-        if (e.getKeyChar() == 'w' && MainMenu.getIsEscapeMap()) {
-            EscapeMap.yPos -= moveAmt;
-            EscapeMap m = new EscapeMap(this);
-            m.run();
-        }
-        if (e.getKeyChar() == 'a' && MainMenu.getIsEscapeMap()) {
-            EscapeMap.xPos -= moveAmt;
-            EscapeMap m = new EscapeMap(this);
-            m.run();
-        }
-        if (e.getKeyChar() == 'd' && MainMenu.getIsEscapeMap()) {
-            EscapeMap.xPos += moveAmt;
-            EscapeMap m = new EscapeMap(this);
-            m.run();
-        }
+        if (MainMenu.getIsEscapeMap() && !MainMenu.getIsHallwayGame() && !MainMenu.getIsKickBall()
+                && !MainMenu.getIsTalkToTeacher() && !MainMenu.getIsTakeNotes() && !MainMenu.getIsLibraryGame()) {
+            int moveAmt = 5;
+            if (e.getKeyChar() == 's' && MainMenu.getIsEscapeMap()) {
+                EscapeMap.yPos += moveAmt;
+                EscapeMap m = new EscapeMap(this);
+                m.run();
+            }
+            if (e.getKeyChar() == 'w' && MainMenu.getIsEscapeMap()) {
+                EscapeMap.yPos -= moveAmt;
+                EscapeMap m = new EscapeMap(this);
+                m.run();
+            }
+            if (e.getKeyChar() == 'a' && MainMenu.getIsEscapeMap()) {
+                EscapeMap.xPos -= moveAmt;
+                EscapeMap m = new EscapeMap(this);
+                m.run();
+            }
+            if (e.getKeyChar() == 'd' && MainMenu.getIsEscapeMap()) {
+                EscapeMap.xPos += moveAmt;
+                EscapeMap m = new EscapeMap(this);
+                m.run();
+            }
         }
         // ESCAPE MAP IN LIBRARY
-        if (MainMenu.getIsEscapeMap() && (EscapeMap.xPos > 511 && EscapeMap.xPos < 700 && !EscapeMap.isLibraryGameComplete)
+        if (MainMenu.getIsEscapeMap()
+                && (EscapeMap.xPos > 511 && EscapeMap.xPos < 700 && !EscapeMap.isLibraryGameComplete)
                 && (EscapeMap.yPos > 250 && EscapeMap.yPos < 413)) {
             EscapeMap.text = "Library Game";
         } else if (MainMenu.getIsEscapeMap() && (EscapeMap.xPos > 328 && EscapeMap.xPos < 510)
@@ -560,6 +543,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             }
             if ((x > 88 && x < 294) && (y > 392 && y < 460) && EscapeMap.text.equals("Exit")) {
                 resetMinigameVars();
+                resetLevelVars();
                 MainMenu.setIsEscapeMap(false);
                 MainMenu m = new MainMenu(this);
                 m.run();
@@ -855,24 +839,23 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                 LibraryGame.score++;
                 LibraryGame.stage++;
             }
-            if(LibraryGame.stage == 7){
-               if (x > 300 && x < 500 && y > 300 && y < 400) {
-                  LibraryGame.stage++;
-               }
+            if (LibraryGame.stage == 7) {
+                if (x > 300 && x < 500 && y > 300 && y < 400) {
+                    LibraryGame.stage++;
+                }
             }
-            if (LibraryGame.isComplete){
+            if (LibraryGame.isComplete) {
                 EscapeMap.isLibraryGameComplete = true;
                 MainMenu.setIsLibraryGame(false);
                 EscapeMap l = new EscapeMap(this);
-                l.run(); 
+                l.run();
                 System.out.println("dfskhaf");
-            }
-            else{
-            LibraryGame m = new LibraryGame(this);
-            m.run();
+            } else {
+                LibraryGame m = new LibraryGame(this);
+                m.run();
             }
         }
-    
+
     }
 
     @Override

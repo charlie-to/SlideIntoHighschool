@@ -36,7 +36,7 @@ public class MainMenu{
     public void styleBtn(JButton btn){
         btn.setBorder(BorderFactory.createLineBorder(Color.WHITE, 5, true));
         btn.setBackground(Colours.backgroundBlue);
-        btn.setForeground(Color.WHITE);
+        btn.setForeground(Color.BLACK);
         btn.setFont(new Font(btn.getFont().getName(), Font.PLAIN, 18));
         btn.setFocusPainted(false);
     }
