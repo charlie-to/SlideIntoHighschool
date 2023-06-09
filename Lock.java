@@ -51,6 +51,13 @@ public class Lock {
             // BACKGROUND
             g.setColor(Colours.backgroundBlue);
             g.fillRect(0, 0, getWidth(), getHeight());
+            g.setColor(Color.WHITE);
+            // INSTRUCTION TEXT
+            g.setFont(new Font("Roboto", Font.PLAIN, 50));
+            g.drawString("Unlock the Lock", 200, 55);
+            g.setFont(new Font("Roboto", Font.PLAIN, 20));
+            g.drawString("Use 'S' and 'W' to rotate lock", 10, 100);
+            g.drawString("COMBO: 10, 35, 30", 10, 130);
             // LOCK
             g.setColor(Color.BLACK);
             g.fillOval(240, 80, 320, 320);

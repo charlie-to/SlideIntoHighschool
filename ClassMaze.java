@@ -111,7 +111,7 @@ public class ClassMaze {
         return true;
     }
     /**
-     * displays the screen
+     * displays the out
      */
     public void run() {
         frame.getContentPane().add(new Drawing());
@@ -169,6 +169,16 @@ public class ClassMaze {
             // CHARACTER
             g.setColor(green);
             g.fillOval(curCharX,curCharY, charSize, charSize);
+            // INSTRUCTIONS ADN TITLE
+            g.setColor(Color.WHITE);
+            g.setFont(new Font("Roboto", Font.BOLD, 20));
+            g.drawString("START", 680, 165);
+            g.drawString("FINISH", 40, 285);
+            g.setFont(new Font("Roboto", Font.PLAIN, 25));
+            g.drawString("Move with 'W', 'A', 'S', 'D'", 250, 90);
+            g.setFont(new Font("Roboto", Font.BOLD, 40));
+            g.drawString("MAZE LEVEL", 270, 50);
+
         }
     }
 }

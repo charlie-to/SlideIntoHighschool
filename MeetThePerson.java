@@ -7,6 +7,7 @@ public class MeetThePerson {
    public static int y = 0;
    public static int xPos = 0;
    public static int yPos =0;
+   public static int score = 0;
    public static int stage =1;
    public static boolean hover1 = false;
    public static boolean hover2 = false;

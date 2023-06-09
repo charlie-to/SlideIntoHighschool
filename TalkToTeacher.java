@@ -106,7 +106,7 @@ public class TalkToTeacher {
             g.drawString("teacher happy!", 400, 250);
             }else{
             g.drawString("You have made the", 400, 160);
-            g.drawString("teacher sad!", 400, 250);
+            g.drawString("teacher sad! Try again!", 400, 250);
             }
             g.setFont(new Font("Roboto", Font.PLAIN, 15));
             g.drawString("Continue", 370, 400);

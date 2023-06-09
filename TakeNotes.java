@@ -93,7 +93,7 @@ public class TakeNotes {
             }else{
             g.drawString("Oh no!", 200, 230);
             g.drawString("Your notes were bad and", 200, 280);
-            g.drawString("you failed the test!", 200, 330);
+            g.drawString("you failed the test! Try again", 200, 330);
             win = false;
             }
             g.setColor(Color.BLACK);

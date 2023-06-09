@@ -126,6 +126,10 @@ public class Map {
             g.setFont(new Font("Roboto", Font.PLAIN, 13));
             g.drawString("NEXT", 655, 130);
             g.drawString(">", 670, 170);
+            g.setColor(Color.WHITE);
+            g.setFont(new Font("Roboto", Font.PLAIN, 17));
+            g.drawString("Memorize this map", 625, 250);
+            g.drawString("Then click 'Next'", 625, 300);
          } else {
             // BUTTONS
             g.setColor(Color.BLACK);
