@@ -24,15 +24,15 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         // ClassMaze.curX = ClassMaze.startX;
         // ClassMaze.curY = ClassMaze.startY;
         // MEET THE PERSON
-        MeetThePerson.x = 0;
-        MeetThePerson.y = 0;
-        MeetThePerson.xPos = 0;
-        MeetThePerson.yPos = 0;
-        MeetThePerson.score = 0;
-        MeetThePerson.stage = 1;
-        MeetThePerson.hover1 = false;
-        MeetThePerson.hover2 = false;
-        MeetThePerson.isComplete = false;
+        // MeetThePerson.x = 0;
+        // MeetThePerson.y = 0;
+        // MeetThePerson.xPos = 0;
+        // MeetThePerson.yPos = 0;
+        // MeetThePerson.score = 0;
+        // MeetThePerson.stage = 1;
+        // MeetThePerson.hover1 = false;
+        // MeetThePerson.hover2 = false;
+        // MeetThePerson.isComplete = false;
         // MAP GAME
         Map.x = 0;
         Map.y = 0;
@@ -86,6 +86,10 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         EscapeMap.isTalkToTeacherComplete = false;
         EscapeMap.isKickBallComplete = false;
         EscapeMap.isLibraryGameComplete = false;
+
+        //MAZE
+        ClassMaze.curX = ClassMaze.startX;
+        ClassMaze.curY = ClassMaze.startY;
     }
 
     @Override
@@ -165,52 +169,59 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             }
         }
         // MAZE
-        if (e.getKeyChar() == 'w' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen() && !MainMenu.getIsLock()
+        if (e.getKeyChar() == 'w' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen() && !MainMenu.getIsCongrats()&& !MainMenu.getIsLock()
                 && !MainMenu.getIsMap()) {
             resetMinigameVars();
             ClassMaze.move("up");
             ClassMaze cm = new ClassMaze(this);
             cm.run();
         }
-        if (e.getKeyChar() == 's' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen() && !MainMenu.getIsLock()
+        if (e.getKeyChar() == 's' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen()&& !MainMenu.getIsCongrats() && !MainMenu.getIsLock()
                 && !MainMenu.getIsMap()) {
             resetMinigameVars();
             ClassMaze.move("down");
             ClassMaze cm = new ClassMaze(this);
             cm.run();
         }
-        if (e.getKeyChar() == 'a' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen() && !MainMenu.getIsLock()
+        if (e.getKeyChar() == 'a' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen() && !MainMenu.getIsCongrats()&& !MainMenu.getIsLock()
                 && !MainMenu.getIsMap()) {
             resetMinigameVars();
             ClassMaze.move("left");
             ClassMaze cm = new ClassMaze(this);
             cm.run();
         }
-        if (e.getKeyChar() == 'd' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen() && !MainMenu.getIsLock()
+        if (e.getKeyChar() == 'd' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen() && !MainMenu.getIsCongrats()&& !MainMenu.getIsLock()
                 && !MainMenu.getIsMap()) {
             resetMinigameVars();
             ClassMaze.move("right");
             ClassMaze cm = new ClassMaze(this);
             cm.run();
         }
+        
         if (ClassMaze.checkWinner() && MainMenu.getIsMazeGame()) {
-            MainMenu.setIsMazeGame(false);
+            // MainMenu.setIsMazeGame(false);
             resetMinigameVars();
-            MainMenu ex = new MainMenu(this);
-            ex.run();
+            Congrats c = new Congrats(this, "You have completed the Maze Level!", "Press any key to go to main menu");
+            c.run();
         }
-
         if (MainMenu.getIsLock() && MainMenu.getIsMazeGame()) { // Run lock game and check if complete
             Lock l = new Lock(this);
             l.run();
             if (Lock.checkWinner()) {
+                System.out.println("SDFLK");
                 // MainMenu.setIsLock(false);
                 Congrats c = new Congrats(this, "Yay! Lock Level has been completed.");
                 c.run();
                 if (e.getKeyChar() == ' ') {
                     MainMenu.setIsLock(false);
                     ClassMaze m = new ClassMaze(this);
+                    try{
+                        Robot r = new Robot();
+                        r.keyPress(KeyEvent.VK_W);
+                        r.keyRelease(KeyEvent.VK_W);
+                    }catch (Exception d){System.out.println("robot problem");}
                     m.run();
+
                 }
             }
         } else if (ClassMaze.checkLockGame() && MainMenu.getIsMazeGame()) {
@@ -343,6 +354,14 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        if (ClassMaze.checkWinner() && MainMenu.getIsCongrats()) {
+            MainMenu.setIsMazeGame(false);
+            resetMinigameVars();
+            resetLevelVars();
+            MainMenu m = new MainMenu(this);
+            m.run();
+        }
+        
     }
 
     @Override
@@ -595,10 +614,12 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             SwingUtilities.convertPointFromScreen(p, e.getComponent());
             double x = p.getX();
             double y = p.getY() - 25;
+            System.out.println("STAGE: " + MeetThePerson.stage);
             if (x > 350 && x < 500 && y > 350 && y < 425) {
                 System.out.println("1 clicked");
                 if (MeetThePerson.stage == 1 || MeetThePerson.stage == 2) {
                     MeetThePerson.score++;
+                    MeetThePerson.stage++;
                 }
                 MeetThePerson.hover1 = true;
             } else {
@@ -609,6 +630,9 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                 System.out.println("2 clicked");
                 if (MeetThePerson.stage == 3) {
                     MeetThePerson.score++;
+                    MeetThePerson.stage++;
+                    MainMenu.setIsMeetPerson(false);
+                    MeetThePerson.isComplete = true;
                 }
                 MeetThePerson.hover2 = true;
             } else {
@@ -623,15 +647,17 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                     // m.run();
                 }
                 if (MeetThePerson.score < 3) {
-                    resetMinigameVars();
-                    System.out.println("hi");
+                    // resetMinigameVars();
+                    // MeetThePerson.stage = 1;
+                    // MeetThePerson.score=0;
+                    // System.out.println("hi");
                     // MainMenu.setIsMeetPerson(true);
-                    MainMenu.setIsTextScreen(false);
-                    MeetThePerson m = new MeetThePerson(this);
-                    m.run();
-
+                    // MainMenu.setIsTextScreen(false);
                     // MeetThePerson m = new MeetThePerson(this);
                     // m.run();
+
+                //     // MeetThePerson m = new MeetThePerson(this);
+                //     // m.run();
                 }
                 System.out.println("Meet the person done: " + MeetThePerson.score);
             }
@@ -725,11 +751,11 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             double x = p.getX();
             double y = p.getY() - 25;
 
-            if (x > 350 && x < 500 && y > 350 && y < 425) {
-                MeetThePerson.stage++;
-            } else if (x > 550 && x < 700 && y > 350 && y < 425) {
-                MeetThePerson.stage++;
-            }
+            // if (x > 350 && x < 500 && y > 350 && y < 425) {
+            //     MeetThePerson.stage++;
+            // } else if (x > 550 && x < 700 && y > 350 && y < 425) {
+            //     MeetThePerson.stage++;
+            // }
             try {
                 Robot robot = new Robot();
                 robot.keyPress(KeyEvent.VK_M);
