@@ -46,7 +46,7 @@ public class EscapeMap {
             g.setColor(Color.GREEN);
             g.fillRect(80, 360, 210, 70);
             g.setColor(Color.BLACK);
-            g.setFont(Colours.mediumSerifFont);
+            g.setFont(new Font("roboto", Font.BOLD, 22));
             g.drawString(text, 80, 405);
             if(isHallComplete){
                 try{
@@ -83,6 +83,11 @@ public class EscapeMap {
                     g.drawImage(newImage,  575, 370, null);
                 } catch (Exception e){System.out.println("Error with image");}
             }
+            g.setColor(Color.WHITE);
+            g.setFont(new Font("roboto", Font.BOLD, 22));
+            g.drawString("Move to the green rooms with 'w' 'a' 's' 'd' and play the games", 70, 470);
+            g.setFont(new Font("roboto", Font.BOLD, 35));
+            g.drawString("Escape Level: Survie a School Day", 90, 40);
         }
     }
 }

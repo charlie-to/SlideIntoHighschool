@@ -55,9 +55,9 @@ public class MainMenu{
         styleBtn(deficiencies);
         styleBtn(scores);
         styleBtn(maze);
-        styleBtn(exit);
         styleBtn(escape);
-        menuPanel.add(instructions);
+        styleBtn(exit);
+        // menuPanel.add(instructions);
         menuPanel.add(deficiencies);
         // menuPanel.add(scores);
         menuPanel.add(maze);

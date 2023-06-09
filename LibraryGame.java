@@ -118,8 +118,8 @@ public class LibraryGame {
             g.setColor(Color.WHITE);
             g.setFont(new Font("Roboto", Font.PLAIN, 30));
             g.drawString("Congratulations, you have picked", 200, 200);
-            g.drawString("all the right book for yourself", 350, 300);
-            g.drawString("Continue", 200, 380);
+            g.drawString("all the right book for yourself", 200, 300);
+            g.drawString("Continue", 350, 380);
             System.out.println("done");
             LibraryGame.isComplete = true;
          }else if (stage > 7) {
