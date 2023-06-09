@@ -3,10 +3,13 @@ import javax.swing.*;
 
 public class LearningText {
     JFrame frame;
-    String text;
-    public LearningText(JFrame frame, String text){
+    String text, text2, text3;
+    
+    public LearningText(JFrame frame, String text, String text2, String text3){
         this.frame = frame;
         this.text = text;
+        this.text2 = text2;
+        this.text3 = text3;
         // Clear the frame
         Container contentPane = frame.getContentPane();
         contentPane.removeAll();
@@ -27,8 +30,10 @@ public class LearningText {
             // NUMBERS
             g.setColor(Color.WHITE);
             g.setFont(new Font("Roboto", Font.PLAIN, 30));
-            g.drawString(text, 100, 130);   
-            g.drawString("Press e when you're done learning", 100, 170);   
+            g.drawString(text, 100, 130); 
+             g.drawString(text2, 100, 200); 
+             g.drawString(text3, 100, 270);  
+            g.drawString("Press e when you're done learning", 100, 380);   
         }
     }
 }

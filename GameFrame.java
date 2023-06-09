@@ -379,27 +379,27 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             System.out.println("X: " + p.getX() + "     Y: " + p.getY());
             if ((x > 334 && x < 486) && (y > 37 && y < 100)) {
                 MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a schedule");
+                LearningText t = new LearningText(this, "This is a schedule","It tells you where all of your", "classes are, and who your teachers are.");
                 t.run();
             }
             if ((x > 178 && x < 244) && (y > 248 && y < 310)) {
                 MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a lock");
+                LearningText t = new LearningText(this, "This is a lock", "Turn it clockwise to the first number", "then anticlockwise for the next number");
                 t.run();
             }
             if ((x > 330 && x < 430) && (y > 196 && y < 393)) {
                 MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a student");
+                LearningText t = new LearningText(this, "This is a student", "This could be your classmate. Become friends", "with a variety of people by being nice");
                 t.run();
             }
             if ((x > 474 && x < 578) && (y > 144 && y < 415)) {
                 MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a locker");
+                LearningText t = new LearningText(this, "This is a locker", "You can store all your belongings here,","and grab things from it between classes");
                 t.run();
             }
             if ((x > 629 && x < 734) && (y > 111 && y < 220)) {
                 MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a room number");
+                LearningText t = new LearningText(this, "This is a room number", "your schedule will tell you which room","you should be in.");
                 t.run();
             }
             if ((x > 589 && x < 767) && (y > 46 && y < 88)) {
@@ -418,27 +418,27 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             // System.out.println("X: " + p.getX() + " Y: " + p.getY());
             if ((x > 23 && x < 139) && (y > 143 && y < 262)) {
                 MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a teacher");
+                LearningText t = new LearningText(this, "This is a teacher", "Be polite and respectful towards the", "teachers, and follow their rules");
                 t.run();
             }
             if ((x > 196 && x < 298) && (y > 297 && y < 336)) {
                 MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a notebook");
+                LearningText t = new LearningText(this, "This is a notebook", "You should use it to take notes for","each class to help you memorize material");
                 t.run();
             }
             if ((x > 278 && x < 410) && (y > 69 && y < 234)) {
                 MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a rule list");
+                LearningText t = new LearningText(this, "This is a rule list", "These are your teachers expectations", "for you, follow the rules");
                 t.run();
             }
             if ((x > 413 && x < 529) && (y > 308 && y < 474)) {
                 MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a desk");
+                LearningText t = new LearningText(this, "This is a desk, you will sit here","during each class. Choose wisely, where you","sit can determine how much you concentrate");
                 t.run();
             }
             if ((x > 530 && x < 618) && (y > 215 && y < 369)) {
                 MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a student");
+                LearningText t = new LearningText(this, "This is a student", "This student is your classmate. Befriend", "them so you can help each other in the class");
                 t.run();
             }
             if ((x > 597 && x < 773) && (y > 45 && y < 84)) {
@@ -458,27 +458,27 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             // System.out.println("X: " + p.getX() + " Y: " + p.getY());
             if ((x > 15 && x < 172) && (y > 309 && y < 460)) {
                 MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a table");
+                LearningText t = new LearningText(this, "This is a table", "You can sit at a table with your", "friends, or you can sit outside");
                 t.run();
             }
             if ((x > 269 && x < 360) && (y > 267 && y < 497)) {
                 MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a friend");
+                LearningText t = new LearningText(this, "This is a friend", "You should try to make at least a","couple of friends in high school");
                 t.run();
             }
             if ((x > 223 && x < 443) && (y > 112 && y < 217)) {
                 MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is where you sign up for clubs");
+                LearningText t = new LearningText(this, "This is where you sign up for clubs", "You should try joining 1-2 clubs, it","can help you make friends");
                 t.run();
             }
             if ((x > 587 && x < 666) && (y > 247 && y < 471)) {
                 MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is friend #2");
+                LearningText t = new LearningText(this, "This is friend #2", "You should try to make at least a","couple of friends in high school");
                 t.run();
             }
             if ((x > 712 && x < 800) && (y > 160 && y < 457)) {
                 MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is where you buy food");
+                LearningText t = new LearningText(this, "This is where you buy food", "you should try buying nutritional food", "so you can focus better in your classes");
                 t.run();
             }
             if ((x > 581 && x < 757) && (y > 47 && y < 87)) {
@@ -492,6 +492,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                 m.run();
             }
         }
+
         // MAZE MAP
         if (MainMenu.getIsMap()) {
             x = p.getX();
