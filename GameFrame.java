@@ -63,6 +63,19 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         TalkToTeacher.hover1 = false;
         TalkToTeacher.hover2 = false;
         TalkToTeacher.isComplete = false;
+        // LIBRARY GAME
+        LibraryGame.x=0;
+        LibraryGame.y = 0;
+        LibraryGame.xPos = 0;
+        LibraryGame.yPos =0;
+        LibraryGame.stage =1;
+        LibraryGame.score =0;
+        LibraryGame.x1 = 0;
+        LibraryGame.x2 = 0;
+        LibraryGame.y1 = 0;
+        LibraryGame.y2 = 0;
+        LibraryGame.books= new boolean[6];
+        LibraryGame.isComplete = false;
     }
     public static void resetAllVars() {
         // LOCK GAME
@@ -294,6 +307,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         }
 
         // ESCAPE MAP
+        if (MainMenu.getIsEscapeMap() && !MainMenu.getIsHallwayGame() && !MainMenu.getIsKickBall()&& !MainMenu.getIsTalkToTeacher()&& !MainMenu.getIsTakeNotes() && !MainMenu.getIsLibraryGame()){
         int moveAmt = 5;
         if (e.getKeyChar() == 's' && MainMenu.getIsEscapeMap()) {
             EscapeMap.yPos += moveAmt;
@@ -315,10 +329,10 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             EscapeMap m = new EscapeMap(this);
             m.run();
         }
+        }
         // ESCAPE MAP IN LIBRARY
-        if (MainMenu.getIsEscapeMap() && (EscapeMap.xPos > 511 && EscapeMap.xPos < 700)
+        if (MainMenu.getIsEscapeMap() && (EscapeMap.xPos > 511 && EscapeMap.xPos < 700 && !EscapeMap.isLibraryGameComplete)
                 && (EscapeMap.yPos > 250 && EscapeMap.yPos < 413)) {
-            // System.ou t.println("IN LIBRARY");
             EscapeMap.text = "Library Game";
         } else if (MainMenu.getIsEscapeMap() && (EscapeMap.xPos > 328 && EscapeMap.xPos < 510)
                 && (EscapeMap.yPos > 201 && EscapeMap.yPos < 454) && !EscapeMap.isKickBallComplete) {
@@ -538,6 +552,11 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                     && EscapeMap.text.equals("Gym Game")) {
                 KickBall k = new KickBall(this);
                 k.run();
+            }
+            if ((x > 88 && x < 294) && (y > 392 && y < 460) && !EscapeMap.isKickBallComplete
+                    && EscapeMap.text.equals("Library Game")) {
+                LibraryGame l = new LibraryGame(this);
+                l.run();
             }
             if ((x > 88 && x < 294) && (y > 392 && y < 460) && EscapeMap.text.equals("Exit")) {
                 resetMinigameVars();
@@ -825,6 +844,35 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             }
         }
 
+        // LIBRARY GAME
+        if (MainMenu.getIsLibraryGame()) {
+            Point p = MouseInfo.getPointerInfo().getLocation();
+            SwingUtilities.convertPointFromScreen(p, e.getComponent());
+            double x = p.getX();
+            double y = p.getY() - 25;
+
+            if (x > LibraryGame.x1 && x < LibraryGame.x2 && y > LibraryGame.y1 && y < LibraryGame.y2) {
+                LibraryGame.score++;
+                LibraryGame.stage++;
+            }
+            if(LibraryGame.stage == 7){
+               if (x > 300 && x < 500 && y > 300 && y < 400) {
+                  LibraryGame.stage++;
+               }
+            }
+            if (LibraryGame.isComplete){
+                EscapeMap.isLibraryGameComplete = true;
+                MainMenu.setIsLibraryGame(false);
+                EscapeMap l = new EscapeMap(this);
+                l.run(); 
+                System.out.println("dfskhaf");
+            }
+            else{
+            LibraryGame m = new LibraryGame(this);
+            m.run();
+            }
+        }
+    
     }
 
     @Override

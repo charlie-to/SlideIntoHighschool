@@ -11,6 +11,7 @@ public class EscapeMap {
     public static boolean isTakeNotesComplete = false;
     public static boolean isTalkToTeacherComplete = false;
     public static boolean isKickBallComplete = false;
+    public static boolean isLibraryGameComplete = false;
     public EscapeMap(JFrame frame) {
         this.frame = frame;
         // Clear the frame
@@ -73,6 +74,13 @@ public class EscapeMap {
                     BufferedImage img = ImageIO.read(new File("images/check.png"));
                     Image newImage = img.getScaledInstance(50, 50, Image.SCALE_DEFAULT);
                     g.drawImage(newImage,  400, 340, null);
+                } catch (Exception e){System.out.println("Error with image");}
+            }
+            if(isLibraryGameComplete){
+                try{
+                    BufferedImage img = ImageIO.read(new File("images/check.png"));
+                    Image newImage = img.getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+                    g.drawImage(newImage,  575, 370, null);
                 } catch (Exception e){System.out.println("Error with image");}
             }
         }
