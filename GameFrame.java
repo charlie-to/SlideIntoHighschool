@@ -123,6 +123,12 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
      */
     @Override
     public void keyTyped(KeyEvent e) {
+        if (MainMenu.getIsCongratsMenu()){
+            MainMenu.setIsCongratsMenu(false);
+            MainMenu.setIsLearningLevel(false);
+            MainMenu m = new MainMenu(this);
+            m.run();
+        }
         if (MainMenu.getIsCongrats() && EscapeMap.isHallComplete && EscapeMap.isTakeNotesComplete
                 && EscapeMap.isTalkToTeacherComplete && EscapeMap.isKickBallComplete
                 && EscapeMap.isLibraryGameComplete) {
@@ -148,23 +154,6 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             MainMenu ex = new MainMenu(this);
             ex.run();
         }
-        // LEARNING LEVEL
-        if (e.getKeyChar() == 'e' && MainMenu.getIsLearningHall()) {// && MainMenu.getIsLearningText()){
-            LearningHall l = new LearningHall(this);
-            MainMenu.setIsLearningText(false);
-            l.run();
-        }
-        if (e.getKeyChar() == 'e' && MainMenu.getIsLearningClassroom()) {// && MainMenu.getIsLearningText()){
-            LearningClassroom c = new LearningClassroom(this);
-            MainMenu.setIsLearningText(false);
-            c.run();
-        }
-        if (e.getKeyChar() == 'e' && MainMenu.getIsLearningCaf()) {// && MainMenu.getIsLearningText()){
-            LearningCaf c = new LearningCaf(this);
-            MainMenu.setIsLearningText(false);
-            c.run();
-        }
-
         // LOCK GAME
         if (e.getKeyChar() == 'w' && MainMenu.getIsLock()) {
             if (Lock.degrees == 360)
@@ -419,125 +408,116 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         SwingUtilities.convertPointFromScreen(p, e.getComponent());
         double x = p.getX();
         double y = p.getY();
-        // LEARNING HALL
-        if (MainMenu.getIsLearningHall() && !MainMenu.getIsLearningText()) {
-            System.out.println("X: " + p.getX() + "     Y: " + p.getY());
-            if ((x > 334 && x < 486) && (y > 37 && y < 100)) {
-                MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a schedule","It tells you where all of your", "classes are, and who your teachers are.");
-                t.run();
+        // MAIN MENU
+        if (MainMenu.getIsMainMenu()){
+            if ((x > 260 && x < 527) && (y > 160 && y < 200)){
+                MainMenu.setIsMainMenu(false);
+                LearningLevel h = new LearningLevel(this);
+                h.run();
             }
-            if ((x > 178 && x < 244) && (y > 248 && y < 310)) {
-                MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a lock", "Turn it clockwise to the first number", "then anticlockwise for the next number");
-                t.run();
-            }
-            if ((x > 330 && x < 430) && (y > 196 && y < 393)) {
-                MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a student", "This could be your classmate. Become friends", "with a variety of people by being nice");
-                t.run();
-            }
-            if ((x > 474 && x < 578) && (y > 144 && y < 415)) {
-                MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a locker", "You can store all your belongings here,","and grab things from it between classes");
-                t.run();
-            }
-            if ((x > 629 && x < 734) && (y > 111 && y < 220)) {
-                MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a room number", "your schedule will tell you which room","you should be in.");
-                t.run();
-            }
-            if ((x > 589 && x < 767) && (y > 46 && y < 88)) {
-                MainMenu.setIsLearningHall(false);
-                LearningClassroom c = new LearningClassroom(this);
+            if ((x > 260 && x < 527) && (y > 230 && y < 280)){
+                MainMenu.setIsMainMenu(false);
+                ClassMaze c = new ClassMaze(this);
                 c.run();
             }
-            if ((x > 54 && x < 164) && (y > 49 && y < 87)) {
-                MainMenu.setIsLearningHall(false);
-                MainMenu m = new MainMenu(this);
-                m.run();
-            }
-        }
-        // LEARNING CLASSROOM
-        else if (MainMenu.getIsLearningClassroom() && !MainMenu.getIsLearningText()) {
-            // System.out.println("X: " + p.getX() + " Y: " + p.getY());
-            if ((x > 23 && x < 139) && (y > 143 && y < 262)) {
-                MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a teacher", "Be polite and respectful towards the", "teachers, and follow their rules");
-                t.run();
-            }
-            if ((x > 196 && x < 298) && (y > 297 && y < 336)) {
-                MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a notebook", "You should use it to take notes for","each class to help you memorize material");
-                t.run();
-            }
-            if ((x > 278 && x < 410) && (y > 69 && y < 234)) {
-                MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a rule list", "These are your teachers expectations", "for you, follow the rules");
-                t.run();
-            }
-            if ((x > 413 && x < 529) && (y > 308 && y < 474)) {
-                MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a desk, you will sit here","during each class. Choose wisely, where you","sit can determine how much you concentrate");
-                t.run();
-            }
-            if ((x > 530 && x < 618) && (y > 215 && y < 369)) {
-                MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a student", "This student is your classmate. Befriend", "them so you can help each other in the class");
-                t.run();
-            }
-            if ((x > 597 && x < 773) && (y > 45 && y < 84)) {
-                MainMenu.setIsLearningClassroom(false);
-                MainMenu.setIsLearningCaf(true);
-                LearningCaf caf = new LearningCaf(this);
-                caf.run();
-            }
-            if ((x > 55 && x < 163) && (y > 45 && y < 87)) {
-                MainMenu.setIsLearningClassroom(false);
-                MainMenu m = new MainMenu(this);
-                m.run();
-            }
-        }
-        // LEARNING CAFETERIA
-        else if (MainMenu.getIsLearningCaf() && !MainMenu.getIsLearningText()) {
-            // System.out.println("X: " + p.getX() + " Y: " + p.getY());
-            if ((x > 15 && x < 172) && (y > 309 && y < 460)) {
-                MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a table", "You can sit at a table with your", "friends, or you can sit outside");
-                t.run();
-            }
-            if ((x > 269 && x < 360) && (y > 267 && y < 497)) {
-                MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is a friend", "You should try to make at least a","couple of friends in high school");
-                t.run();
-            }
-            if ((x > 223 && x < 443) && (y > 112 && y < 217)) {
-                MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is where you sign up for clubs", "You should try joining 1-2 clubs, it","can help you make friends");
-                t.run();
-            }
-            if ((x > 587 && x < 666) && (y > 247 && y < 471)) {
-                MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is friend #2", "You should try to make at least a","couple of friends in high school");
-                t.run();
-            }
-            if ((x > 712 && x < 800) && (y > 160 && y < 457)) {
-                MainMenu.setIsLearningText(true);
-                LearningText t = new LearningText(this, "This is where you buy food", "you should try buying nutritional food", "so you can focus better in your classes");
-                t.run();
-            }
-            if ((x > 581 && x < 757) && (y > 47 && y < 87)) {
-                MainMenu.setIsLearningCaf(false);
-                Congrats c = new Congrats(this, "You have finished the learning level!!");
+            if ((x > 260 && x < 527) && (y > 300 && y < 350)){
+                MainMenu.setIsMainMenu(false);
+                EscapeMap c = new EscapeMap(this);
                 c.run();
             }
-            if ((x > 53 && x < 164) && (y > 48 && y < 88)) {
-                MainMenu.setIsLearningCaf(false);
-                MainMenu m = new MainMenu(this);
-                m.run();
+            if ((x > 260 && x < 527) && (y > 370 && y < 420)){
+                System.exit(0);
             }
         }
+        // LEARNING LEVELS
+        if (MainMenu.getIsLearningLevel()){
+            if (LearningLevel.cur == 1){
+                if ((x > 170 && x < 215) && (y > 250 && y < 300)){
+                    LearningLevel.text = "This is a lock.";
+                    LearningLevel.text2 = "You use it to lock your locker and ensure your items are safe.";
+                }
+                else if ((x > 320 && x < 465) && (y > 61 && y < 100)){
+                    LearningLevel.text = "This is a schedule.";
+                    LearningLevel.text2 = "It tells you where all of your classes are, and who your teachers are.";
+                }
+                else if ((x > 315 && x < 405) && (y > 212 && y < 349)){
+                    LearningLevel.text = "This is a student. This could be your classmate. ";
+                    LearningLevel.text2 = "Become friends with a variety of people by being nice";
+                }
+                else if ((x > 458 && x < 564) && (y > 160 && y < 393)){
+                    LearningLevel.text = "This is a locker. You can store all your belongings here";
+                    LearningLevel.text2 = "grab things from it between classes";
+                }
+                else if ((x > 615 && x < 708) && (y > 130 && y < 214)){
+                    LearningLevel.text = "This is a room number.";
+                    LearningLevel.text2 = "Your schedule will tell you which room you should be in.";
+                }
+                
+            }
+            if (LearningLevel.cur == 2){
+                if ((x > 51 && x < 169) && (y > 130 && y < 223)){
+                    LearningLevel.text = "This is a teacher.";
+                    LearningLevel.text2 = "Be polite and respectful towards the teachers, and follow their rules";
+                }
+                if ((x > 315 && x < 435) && (y > 73 && y < 213)){
+                    LearningLevel.text = "This is a rule list.";
+                    LearningLevel.text2 = "These are your teachers expectations for you. Follow the rules.";
+                }
+                if ((x > 277 && x < 373) && (y > 269 && y < 299)){
+                    LearningLevel.text = "This is a notebook.";
+                    LearningLevel.text2 = "You should use it to take notes for each class to help you memorize material.";
+                }
+                if ((x > 512 && x < 630) && (y > 285 && y < 399)){
+                    LearningLevel.text = "This is a desk. You will sit here, during each class.";
+                    LearningLevel.text2 = "Choose wisely, where you sit can determine how much you concentrate.";
+                }
+                if ((x > 643 && x < 723) && (y > 195 && y < 323)){
+                    LearningLevel.text = "This is a student. This student is your classmate";
+                    LearningLevel.text2 = " Befriend them so you can help each other in the class";
+                }
+            }
+            if (LearningLevel.cur == 3){
+                if ((x > 263 && x < 476) && (y > 71 && y < 173)){
+                    LearningLevel.text = "This is where you sign up for clubs.";
+                    LearningLevel.text2 = "You should try joining 1-2 clubs, it can help you make friends.";
+                }
+                if ((x > 13 && x < 175) && (y > 279 && y < 406)){
+                    LearningLevel.text = "This is a table.";
+                    LearningLevel.text2 = "You can sit at a table with your friends, or you can sit outside.";
+                }
+                if ((x > 263 && x < 357) && (y > 230 && y < 406)){
+                    LearningLevel.text = "This is a friend";
+                    LearningLevel.text2 = "You should try to make at least a couple of friends in high school.";
+                }
+                if ((x > 659 && x < 786) && (y > 145 && y < 411)){
+                    LearningLevel.text = "This is where you buy food.";
+                    LearningLevel.text2 = "You should try buying nutritional food so you can focus better in your classes.";
+                }
+            }
+            if ((x > 573 && x < 752) && (y > 62 && y < 99)){
+                LearningLevel.cur += 1;
+                LearningLevel.text = "Click the circled items to learn about them.";
+                LearningLevel.text2 = "Click 'Next Room' after you've learnt about all the different items in the room";
+            }
 
+            if (LearningLevel.cur == 4){
+                LearningLevel.resetVars();
+                MainMenu.setIsLearningLevel(false);
+                CongratsMenu c = new CongratsMenu(this,"You have finished the learning level!", "Press any key to go to back to main menu");
+                c.run();
+            }
+            else if ((x > 38 && x < 148) && (y > 63 && y < 99)){
+                LearningLevel.resetVars();
+                MainMenu.setIsLearningLevel(false);
+                MainMenu m = new MainMenu(this);
+                m.run();
+            }
+            else{
+                LearningLevel l = new LearningLevel(this);
+                l.run();
+            }
+        }
+        
         // MAZE MAP
         if (MainMenu.getIsMap()) {
             x = p.getX();
@@ -660,6 +640,12 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
      */
     @Override
     public void mousePressed(MouseEvent e) {
+
+        Point q = MouseInfo.getPointerInfo().getLocation();
+        SwingUtilities.convertPointFromScreen(q, e.getComponent());
+        double xx = q.getX();
+        double yy = q.getY();
+        System.out.println("X: " + xx + "   Y: "+ yy);
         if (MainMenu.getIsMeetPerson()) {
             Point p = MouseInfo.getPointerInfo().getLocation();
             SwingUtilities.convertPointFromScreen(p, e.getComponent());

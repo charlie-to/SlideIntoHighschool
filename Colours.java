@@ -16,6 +16,7 @@ public class Colours {
 
     /** background color */
     public static Color backgroundBlue = new Color(16, 128, 177);
+    public static Color darkerBlue =new Color(0, 44, 71);
     /** large font */
     public static Font largeSerifFont = new Font("Serif", Font.BOLD, 50);
     /** medium font */

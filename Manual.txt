@@ -1,7 +1,6 @@
-# SlideIntoHighschool
-Grade 12 computer science culminating project
-Main method in driver
+Slide into Highschool Manual
 
+Main method in Driver class
 Description: A interactive game for elementary/middle school students to show them what it's like to be a highschooler
 
 Level 1, Deficiencies game:

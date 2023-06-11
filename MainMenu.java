@@ -19,13 +19,12 @@ public class MainMenu{
  
     JFrame frame;
     private static boolean isInstruction;
+    private static boolean isMainMenu;
+    private static boolean isLearningLevel;
     private static boolean isLock;
     private static boolean isMazeGame;
-    private static boolean isLearningHall;
-    private static boolean isLearningClassroom;
-    private static boolean isLearningCaf;
-    private static boolean isLearningText;
     private static boolean isCongrats;
+    private static boolean isCongratsMenu;
     private static boolean isEscapeMap;
     private static boolean isMap;
     private static boolean isTextScreen;
@@ -49,88 +48,78 @@ public class MainMenu{
         isInstruction = false;
 
         // Clear the frame
+        MainMenu.setIsMainMenu(true);
         Container contentPane = frame.getContentPane();
         contentPane.removeAll();
         frame.revalidate();
         frame.repaint();
     }
+
+    class Drawing extends JComponent {
+        public void paint(Graphics g) {
+             super.paintComponent(g);
+            // BACKGROUND
+            g.setColor(Colours.darkerBlue);
+            g.fillRect(0, 0, getWidth(), getHeight());
+            g.setColor(Colours.backgroundBlue);
+            g.fillRect(20, 20, getWidth()-40, getHeight()-40);
+            g.setFont(new Font ("Roboto", Font.BOLD, 40));
+            g.setColor(Color.WHITE);
+            g.drawString("Main Menu",285 ,90);
+            g.setColor(Colours.darkerBlue);
+            g.fillRoundRect(250, 130, 270, 50, 20, 20);
+            g.fillRoundRect(250, 130+70, 270, 50, 20, 20);
+            g.fillRoundRect(250, 130+70+70, 270, 50, 20, 20);
+            g.fillRoundRect(250, 130+70+70+70, 270, 50, 20, 20);
+            g.setColor(Color.WHITE);
+            g.setFont(new Font ("Roboto", Font.PLAIN, 22));
+            g.drawString("Level 1: LEARNING", 290, 163);
+            g.drawString("Level 2: MAZE", 290, 163+70);
+            g.drawString("Level 3: ESCAPE", 290, 163+70+70);
+            g.drawString("EXIT", 355, 163+70+70+70);
+        }
+    }
+    public void run(){           
+        frame.getContentPane().add(new Drawing());
+        frame.setVisible(true);
+    }
+    /**
+     * getIsMainMenu method, function
+     *
+     * @return boolean, whether the game is running corresponding class currently
+     */
+    public static boolean getIsMainMenu(){
+        return isMainMenu;
+    }
     
     /**
-     * styleBtn method, creates button
+     * setIsInstruction method, function
      *
+     * @param onMainMenu Sets if game is running corresponding class currently
      */
-    public void styleBtn(JButton btn){
-        btn.setBorder(BorderFactory.createLineBorder(Color.WHITE, 5, true));
-        btn.setBackground(Colours.backgroundBlue);
-        btn.setForeground(Color.BLACK);
-        btn.setFont(new Font(btn.getFont().getName(), Font.PLAIN, 18));
-        btn.setFocusPainted(false);
-    }
-    public void run(){
-        frame.setLayout(new BorderLayout());
-        
-        JPanel menuPanel = new JPanel(new GridLayout(3, 2, 20, 20), false);
-        JButton instructions = new JButton("Instructions");
-        JButton deficiencies = new JButton("Deficiencies (1)");
-        JButton scores = new JButton("Scores");
-        JButton exit = new JButton("Exit");
-        JButton maze = new JButton("Maze (2)");
-        JButton escape = new JButton("Escape (3)");
-        menuPanel.setBorder(new EmptyBorder(120, 170, 100, 170));
-        styleBtn(instructions);
-        styleBtn(deficiencies);
-        styleBtn(scores);
-        styleBtn(maze);
-        styleBtn(escape);
-        styleBtn(exit);
-        // menuPanel.add(instructions);
-        menuPanel.add(deficiencies);
-        // menuPanel.add(scores);
-        menuPanel.add(maze);
-        menuPanel.add(exit);
-        menuPanel.add(escape);
-
-        menuPanel.setBackground(Colours.backgroundBlue);        
-        frame.add(menuPanel, BorderLayout.CENTER);
-
-        frame.setVisible(true);
-
-        instructions.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("instructions clicked");
-                Instructions i = new Instructions(frame);
-                i.run();
-            }
-        });
-        exit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
-                System.exit(0);
-            }
-        });
-        deficiencies.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("deficiencies clicked");
-                LearningHall h = new LearningHall(frame);
-                h.run();
-            }
-        });
-        maze.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("maze clicked");
-                ClassMaze c = new ClassMaze(frame);
-                c.run();
-            }
-        });
-        escape.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
-                System.out.println("escape clicked");
-                EscapeMap m = new EscapeMap(frame);
-                m.run();
-            }
-        });
-        
+    public static void setIsMainMenu(boolean onMainMenu)
+    {
+        isMainMenu = onMainMenu;
     }
 
+    /**
+     * getIsMainMenu method, function
+     *
+     * @return boolean, whether the game is running corresponding class currently
+     */
+    public static boolean getIsLearningLevel(){
+        return isLearningLevel;
+    }
+    
+    /**
+     * setIsInstruction method, function
+     *
+     * @param onMainMenu Sets if game is running corresponding class currently
+     */
+    public static void setIsLearningLevel(boolean onLearningLevel)
+    {
+        isLearningLevel = onLearningLevel;
+    }
    /**
      * getIsInstructions method, function
      *
@@ -203,78 +192,6 @@ public class MainMenu{
     public static void setIsMap(boolean onMap){
         isMap = onMap;
     }   
-    
-    /**
-     * getIsLearningText method, function
-     *
-     * @return boolean, whether the game is running corresponding class currently
-     */ 
-    public static boolean getIsLearningText(){
-        return isLearningText;
-    }
-    
-    /**
-     * setIsLearningText method, function
-     *
-     * @param onLearningText Sets if game is running corresponding class currently
-     */
-    public static void setIsLearningText(boolean onLearningText){
-        isLearningText = onLearningText;
-    }
-    
-    /**
-     * getIsLearningHall method, function
-     *
-     * @return boolean, whether the game is running corresponding class currently
-     */
-    public static boolean getIsLearningHall(){
-        return isLearningHall;
-    }
-    
-    /**
-     * setIsLearningHall method, function
-     *
-     * @param onLearningHall Sets if game is running corresponding class currently
-     */
-    public static void setIsLearningHall(boolean onLearningHall){
-        isLearningHall = onLearningHall;
-    }
-    
-    /**
-     * getIsLearningClassroom method, function
-     *
-     * @return boolean, whether the game is running corresponding class currently
-     */
-    public static boolean getIsLearningClassroom(){
-        return isLearningClassroom;
-    }
-    
-    /**
-     * setIsLearningClassroom method, function
-     *
-     * @param onLearningClassroom Sets if game is running corresponding class currently
-     */
-    public static void setIsLearningClassroom(boolean onLearningClassroom){
-        isLearningClassroom = onLearningClassroom;
-    }
-    
-    /**
-     * getIsLearningCaf method, function
-     *
-     * @return boolean, whether the game is running corresponding class currently
-     */
-    public static boolean getIsLearningCaf(){
-        return isLearningCaf;
-    }
-    
-    /**
-     * setIsLearningCaf method, function
-     *
-     * @param onLearningCaf Sets if game is running corresponding class currently
-     */
-    public static void setIsLearningCaf(boolean onLearningCaf){
-        isLearningCaf = onLearningCaf;
-    } 
     
     /**
      * getIsCongrats method, function
@@ -436,5 +353,22 @@ public class MainMenu{
      */
     public static void setIsKickBall(boolean onKickBall){
         isKickBall = onKickBall;
+    }
+    /**
+     * getIsCongratsMenu method, function
+     *
+     * @return boolean, whether the game is running corresponding class currently
+     */
+    public static boolean getIsCongratsMenu(){
+        return isCongratsMenu;
+    }
+    
+    /**
+     * setIsCongratesMenu method, function
+     *
+     * @param onCongratsMenu Sets if game is running corresponding class currently
+     */
+    public static void setIsCongratsMenu(boolean onCongratsMenu){
+        isCongratsMenu = onCongratsMenu;
     }
 }
