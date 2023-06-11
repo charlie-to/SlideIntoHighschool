@@ -60,6 +60,7 @@ public class ClassMaze {
      * @param frame takes JFrame
      */
     public ClassMaze(JFrame frame) {
+        System.out.println("hi");
         this.frame = frame;
         // Clear the frame
         Container contentPane = frame.getContentPane();
@@ -163,8 +164,11 @@ public class ClassMaze {
         public void paint(Graphics g) {
             super.paintComponent(g);
             // BACKGROUND
-            g.setColor(Colours.backgroundBlue);
+            g.setColor(Colours.darkerBlue);
             g.fillRect(0, 0, getWidth(), getHeight());
+            g.setColor(Colours.backgroundBlue);
+            g.fillRect(20, 20, getWidth()-40, getHeight()-40);
+            g.setFont(new Font ("Roboto", Font.BOLD, 40));
             // DRAW MAZE
             int x = mazeStartX;
             int y = mazeStartY;
@@ -206,9 +210,8 @@ public class ClassMaze {
             g.drawString("START", 680, 165);
             g.drawString("FINISH", 40, 285);
             g.setFont(new Font("Roboto", Font.PLAIN, 25));
-            g.drawString("Move with 'W', 'A', 'S', 'D'", 250, 90);
             g.setFont(new Font("Roboto", Font.BOLD, 40));
-            g.drawString("MAZE LEVEL", 270, 50);
+            g.drawString("MAZE LEVEL", 270, 80);
 
         }
     }

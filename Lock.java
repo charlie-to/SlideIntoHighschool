@@ -1,4 +1,3 @@
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -72,15 +71,17 @@ public class Lock {
         public void paint(Graphics g) {
             super.paintComponent(g);
             // BACKGROUND
-            g.setColor(Colours.backgroundBlue);
+            g.setColor(Colours.darkerBlue);
             g.fillRect(0, 0, getWidth(), getHeight());
+            g.setColor(Colours.backgroundBlue);
+            g.fillRect(20, 20, getWidth()-40, getHeight()-40);
             g.setColor(Color.WHITE);
             // INSTRUCTION TEXT
-            g.setFont(new Font("Roboto", Font.PLAIN, 50));
-            g.drawString("Unlock the Lock", 200, 55);
-            g.setFont(new Font("Roboto", Font.PLAIN, 20));
-            g.drawString("Use 'S' and 'W' to rotate lock", 10, 100);
-            g.drawString("COMBO: 10, 35, 30", 10, 130);
+            g.setFont(Colours.title);
+            g.drawString("Unlock the Lock", 250, 65);
+            g.setFont(new Font("Roboto", Font.BOLD, 25));
+            // g.drawString("Use 'S' and 'W' to rotate lock", 10, 100);
+            g.drawString("COMBO: 10, 35, 30", 280, 430);
             // LOCK
             g.setColor(Color.BLACK);
             g.fillOval(240, 80, 320, 320);

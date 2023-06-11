@@ -2,7 +2,7 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class Congrats {
+public class MazeIntro {
 
 /**
  * Congrats class of Slide Into Highschool, shows congratulations message for games
@@ -17,19 +17,14 @@ public class Congrats {
  
     /** Holds the frame*/
     JFrame frame;
-    /** Holds the text for congratulations screen*/
-    String text;
-    /** Holds the text for congratulations screen*/
-    String text2 = "press space to continue";
-    public Congrats(JFrame frame, String text){
+    public MazeIntro(JFrame frame, String text){
+        MainMenu.setIsMazeIntro(true);
         this.frame = frame;
-        this.text = text;
         // Clear the frame
         Container contentPane = frame.getContentPane();
         contentPane.removeAll();
         this.frame.revalidate();
         this.frame.repaint();
-        MainMenu.setIsCongrats(true);
     }
     
     /**
@@ -38,20 +33,16 @@ public class Congrats {
      * @param frame, text, text2, takes frames and texts to display
      * @return name Function
      */
-    public Congrats(JFrame frame, String text, String text2){
+    public MazeIntro(JFrame frame){
         this.frame = frame;
-        this.text = text;
-        this.text2 = text2;
         // Clear the frame
         Container contentPane = frame.getContentPane();
         contentPane.removeAll();
         this.frame.revalidate();
         this.frame.repaint();
-        MainMenu.setIsCongrats(true);
-        System.out.println("GONGRATS: " + MainMenu.getIsCongrats());
+        MainMenu.setIsMazeIntro(true);
     }
     public void run(){
-        MainMenu.setIsCongrats(true);
         frame.getContentPane().add(new Drawing());
         frame.setVisible(true);
     }
@@ -64,9 +55,10 @@ public class Congrats {
             // NUMBERS
             g.setColor(Color.WHITE);
             g.setFont(new Font("Roboto", Font.PLAIN, 30));
-            g.drawString("Congrats!", 100, 130);   
-            g.drawString(text, 100, 170);
-            g.drawString(text2, 100, 210);   
+            g.drawString("Welcome to the maze level.", 100, 130);   
+            g.drawString("Use 'W', 'A', 'S', 'D' to move yourself arround", 100, 170);
+            g.drawString("Make it to the end of the maze by overcoming obstacles you see along the way", 100, 170+40);
+            g.drawString("Press any key to start, Good luck!", 100, 170+80);
         }
     }
 }

@@ -102,8 +102,10 @@ public class Map {
       public void paint(Graphics g) {
          super.paintComponent(g);
          // BACKGROUND
-         g.setColor(Colours.backgroundBlue);
+         g.setColor(Colours.darkerBlue);
          g.fillRect(0, 0, getWidth(), getHeight());
+         g.setColor(Colours.backgroundBlue);
+         g.fillRect(20, 20, getWidth()-40, getHeight()-40);
          // MAP
          g.setColor(Color.BLACK);
          g.fillRect(100, 100, 500, 300);
@@ -135,7 +137,7 @@ public class Map {
 
          // WORDS
          g.setColor(Color.WHITE);
-         g.setFont(new Font("Roboto", Font.PLAIN, 50));
+         g.setFont(Colours.title);
          g.drawString("MAP", 350, 70);
 
          if (stage == 1) {
@@ -152,9 +154,8 @@ public class Map {
             g.drawString("NEXT", 655, 130);
             g.drawString(">", 670, 170);
             g.setColor(Color.WHITE);
-            g.setFont(new Font("Roboto", Font.PLAIN, 17));
-            g.drawString("Memorize this map", 625, 250);
-            g.drawString("Then click 'Next'", 625, 300);
+            g.setFont(new Font("Roboto", Font.BOLD, 20));
+            g.drawString("Memorize this map, then click 'Next'", 100, 425);
          } else {
             // BUTTONS
             g.setColor(Color.BLACK);
@@ -199,6 +200,8 @@ public class Map {
             g.drawString("Rm 202", 650, 210);
             g.drawString("Lobby", 655, 290);
             g.drawString("Gym", 660, 370);
+            g.setFont(new Font("Roboto", Font.BOLD, 20));
+            g.drawString("Click a room from the right panel, then click it's location on the map", 100, 425);
 
          }
          if (win){

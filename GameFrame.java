@@ -124,10 +124,17 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
     @Override
     public void keyTyped(KeyEvent e) {
         if (MainMenu.getIsCongratsMenu()){
+            System.out.println("1");
             MainMenu.setIsCongratsMenu(false);
             MainMenu.setIsLearningLevel(false);
             MainMenu m = new MainMenu(this);
             m.run();
+        }
+        if(MainMenu.getIsMazeIntro()){
+            System.out.println("2");
+            MainMenu.setIsMazeIntro(false);
+            ClassMaze c = new ClassMaze(this);
+            c.run();
         }
         if (MainMenu.getIsCongrats() && EscapeMap.isHallComplete && EscapeMap.isTakeNotesComplete
                 && EscapeMap.isTalkToTeacherComplete && EscapeMap.isKickBallComplete
@@ -149,13 +156,14 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             m.run();
         }
         // INSTRUCTIONS
-        if (e.getKeyChar() == 'e' && MainMenu.getIsInstruction()) {
+        if (e.getKeyChar() == 'e' && MainMenu.getIsInstruction() && !MainMenu.getIsCongrats()) {
             resetMinigameVars();
             MainMenu ex = new MainMenu(this);
             ex.run();
         }
         // LOCK GAME
-        if (e.getKeyChar() == 'w' && MainMenu.getIsLock()) {
+        if (e.getKeyChar() == 'w' && MainMenu.getIsLock()&&!Lock.checkWinner()) {
+            System.out.println(MainMenu.getIsCongrats());
             if (Lock.degrees == 360)
                 Lock.degrees = 45;
             else
@@ -163,28 +171,15 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             Lock.turns.add("up");
             Lock l = new Lock(this);
             l.run();
-            // if (l.checkWinner()){
-            // MainMenu.setIsLock(false);
-            // resetMinigameVars();
-            // MainMenu ex = new MainMenu(this);
-            // ex.run();
-            // }
         }
-        if (e.getKeyChar() == 's' && MainMenu.getIsLock()) {
+        if (e.getKeyChar() == 's' && MainMenu.getIsLock() && !Lock.checkWinner()) {
             if (Lock.degrees == 0)
                 Lock.degrees = 315;
             else
                 Lock.degrees -= 45;
             Lock.turns.add("down");
             Lock l = new Lock(this);
-            // System.out.println(Lock.degrees);
             l.run();
-            if (l.checkWinner()) {
-                MainMenu.setIsLock(false);
-                resetMinigameVars();
-                MainMenu ex = new MainMenu(this);
-                ex.run();
-            }
         }
         // MAZE
         if (e.getKeyChar() == 'w' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen() && !MainMenu.getIsCongrats()&& !MainMenu.getIsLock()
@@ -223,10 +218,8 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             c.run();
         }
         if (MainMenu.getIsLock() && MainMenu.getIsMazeGame()) { // Run lock game and check if complete
-            Lock l = new Lock(this);
-            l.run();
+            
             if (Lock.checkWinner()) {
-                System.out.println("SDFLK");
                 // MainMenu.setIsLock(false);
                 Congrats c = new Congrats(this, "Yay! Lock Level has been completed.");
                 c.run();
@@ -242,12 +235,17 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
 
                 }
             }
+            else{
+                Lock l = new Lock(this);
+                l.run();
+            }
         } else if (ClassMaze.checkLockGame() && MainMenu.getIsMazeGame()) {
             if (e.getKeyChar() == 'n' && !MainMenu.getIsLock()) {
                 MainMenu.setIsTextScreen(false);
                 Lock l = new Lock(this);
                 l.run();
             } else {
+                TextScreen.cur = "lock";
                 TextScreen t = new TextScreen(this, "Obstacle #1: Unlock The Lock");
                 t.run();
             }
@@ -279,7 +277,8 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                 Map l = new Map(this);
                 l.run();
             } else {
-                TextScreen t = new TextScreen(this, "Obstacle #1: Map the school");
+                TextScreen.cur = "map";
+                TextScreen t = new TextScreen(this, "Obstacle #2: Map the school");
                 t.run();
             }
         }
@@ -378,6 +377,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (ClassMaze.checkWinner() && MainMenu.getIsCongrats()) {
+            System.out.println("3");
             MainMenu.setIsMazeGame(false);
             resetMinigameVars();
             resetLevelVars();
@@ -410,6 +410,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         double y = p.getY();
         // MAIN MENU
         if (MainMenu.getIsMainMenu()){
+            MainMenu.setIsMainMenu(false);
             if ((x > 260 && x < 527) && (y > 160 && y < 200)){
                 MainMenu.setIsMainMenu(false);
                 LearningLevel h = new LearningLevel(this);
@@ -417,8 +418,10 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             }
             if ((x > 260 && x < 527) && (y > 230 && y < 280)){
                 MainMenu.setIsMainMenu(false);
-                ClassMaze c = new ClassMaze(this);
-                c.run();
+                MazeIntro l = new MazeIntro(this);
+                l.run();
+                // ClassMaze c = new ClassMaze(this);
+                // c.run();
             }
             if ((x > 260 && x < 527) && (y > 300 && y < 350)){
                 MainMenu.setIsMainMenu(false);
@@ -426,6 +429,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                 c.run();
             }
             if ((x > 260 && x < 527) && (y > 370 && y < 420)){
+                System.out.println("goodbye");
                 System.exit(0);
             }
         }
@@ -497,7 +501,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             if ((x > 573 && x < 752) && (y > 62 && y < 99)){
                 LearningLevel.cur += 1;
                 LearningLevel.text = "Click the circled items to learn about them.";
-                LearningLevel.text2 = "Click 'Next Room' after you've learnt about all the different items in the room";
+                LearningLevel.text2 = "Click the green button after you've learnt about all the items in the room";
             }
 
             if (LearningLevel.cur == 4){

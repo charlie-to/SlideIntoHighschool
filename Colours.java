@@ -19,6 +19,7 @@ public class Colours {
     public static Color darkerBlue =new Color(0, 44, 71);
     /** large font */
     public static Font largeSerifFont = new Font("Serif", Font.BOLD, 50);
+    public static Font title = new Font ("Roboto", Font.BOLD, 40);
     /** medium font */
     public static Font mediumSerifFont = new Font("Serif", Font.BOLD, 35);
 }

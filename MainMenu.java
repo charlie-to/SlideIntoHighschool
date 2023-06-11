@@ -34,6 +34,8 @@ public class MainMenu{
     private static boolean isTakeNotes;
     private static boolean isTalkToTeacher;
     private static boolean isKickBall;
+
+    private static boolean isMazeIntro;
     
     
     
@@ -63,7 +65,7 @@ public class MainMenu{
             g.fillRect(0, 0, getWidth(), getHeight());
             g.setColor(Colours.backgroundBlue);
             g.fillRect(20, 20, getWidth()-40, getHeight()-40);
-            g.setFont(new Font ("Roboto", Font.BOLD, 40));
+            g.setFont(Colours.title);
             g.setColor(Color.WHITE);
             g.drawString("Main Menu",285 ,90);
             g.setColor(Colours.darkerBlue);
@@ -370,5 +372,23 @@ public class MainMenu{
      */
     public static void setIsCongratsMenu(boolean onCongratsMenu){
         isCongratsMenu = onCongratsMenu;
+    }
+
+    /**
+     * getIsMazeIntro method, function
+     *
+     * @return boolean, whether the game is running corresponding class currently
+     */
+    public static boolean getIsMazeIntro(){
+        return isMazeIntro;
+    }
+    
+    /**
+     * getIsMazeIntro method, function
+     *
+     * @param onMazeIntro Sets if game is running corresponding class currently
+     */
+    public static void setIsMazeIntro(boolean onMazeIntro){
+        isMazeIntro = onMazeIntro;
     }
 }

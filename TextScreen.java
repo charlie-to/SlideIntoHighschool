@@ -15,8 +15,8 @@ public class TextScreen {
  */
     JFrame frame;
     String text;
-    
-     
+    public static String cur;    
+
    /**
      * Constructor method
      *
@@ -40,13 +40,38 @@ public class TextScreen {
         public void paint(Graphics g) {
             super.paintComponent(g);
             // BACKGROUND
-            g.setColor(Colours.backgroundBlue);
+            g.setColor(Colours.darkerBlue);
             g.fillRect(0, 0, getWidth(), getHeight());
+            g.setColor(Colours.backgroundBlue);
+            g.fillRect(20, 20, getWidth()-40, getHeight()-40);
             // NUMBERS
             g.setColor(Color.WHITE);
-            g.setFont(new Font("Roboto", Font.PLAIN, 30));
-            g.drawString(text, 100, 170);
-            g.drawString("Press 'n' when you are ready to start", 100, 210);
+            g.setFont(new Font("Roboto", Font.BOLD, 30));
+            g.drawString(text, 100, 70);
+            // g.setFont(new Font("Roboto", Font.PLAIN, 20));
+            int a = 120;
+            int l = 40;
+            if (cur.equals("lock")){
+                g.setFont(new Font("Roboto", Font.PLAIN, 24));
+                g.drawString("Rotate the lock using 'W' and 'S'", 100, a);
+                g.setFont(new Font("Roboto", Font.BOLD, 20));
+                g.drawString("How to unlock a lock:", 100, a+l);
+                g.setFont(new Font("Roboto", Font.PLAIN, 20));
+                g.drawString("1. Rotate it 1 rotation clockwise to reset it", 100, a+l*2);
+                g.drawString("2. Rotate it clockwise and stop at the first number", 100, a+l*3);
+                g.drawString("3. Rotate it counter-clockwise a full rotation, stop at the first number", 100, a+l*4);
+                g.drawString("4. Rotate it counter-clockwise to the second number", 100, a+l*5);
+                g.drawString("5. Rotate it clockwise to the last number", 100, a+l*6);
+                g.drawString("Press 'n' when you are ready to start", 230, 10+a+l*7);
+            }
+            if (cur.equals("map")){
+                g.setFont(new Font("Roboto", Font.PLAIN, 24));
+                g.drawString("You will be given a map to memorize", 100, a);
+                g.setFont(new Font("Roboto", Font.PLAIN, 20));
+                g.drawString("1. Memorize the room locations on the map then click next", 100, a+l);
+                g.drawString("2. Place the missing rooms in their correct location", 100, a+l*2);
+                g.drawString("Press 'n' when you are ready to start", 230, 10+a+l*7);
+            }
         }
     }
 }
