@@ -50,8 +50,10 @@ public class MeetThePerson {
       public void paint(Graphics g) {
          super.paintComponent(g);
          // BACKGROUND
-         g.setColor(Colours.backgroundBlue);
+         g.setColor(Colours.darkerBlue);
          g.fillRect(0, 0, getWidth(), getHeight());
+         g.setColor(Colours.backgroundBlue);
+         g.fillRect(20, 20, getWidth()-40, getHeight()-40);
          // PERSON
          g.setColor(new Color(200, 170, 150));
          g.fillRect(180, 200, 40, 100);// neck
@@ -86,7 +88,7 @@ public class MeetThePerson {
 
          // WORDS
          g.setColor(Color.WHITE);
-         g.setFont(new Font("Roboto", Font.PLAIN, 50));
+         g.setFont(Colours.title);
          g.drawString("MEET THE PERSON", 200, 70);
 
          g.setColor(Color.WHITE);
@@ -117,6 +119,8 @@ public class MeetThePerson {
             System.out.println("done");
             MeetThePerson.isComplete = true;
          }
+         g.setColor(Colours.darkerBlue);
+         g.fillRect(0, getHeight()-20, getWidth(),20);
       }
    }
 }
