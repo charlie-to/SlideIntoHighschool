@@ -114,6 +114,8 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         //MAZE
         ClassMaze.curX = ClassMaze.startX;
         ClassMaze.curY = ClassMaze.startY;
+        ClassMaze.curCharX = 634;
+        ClassMaze.curCharY = 144;
     }
 
    /**
@@ -124,14 +126,12 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
     @Override
     public void keyTyped(KeyEvent e) {
         if (MainMenu.getIsCongratsMenu()){
-            System.out.println("1");
             MainMenu.setIsCongratsMenu(false);
             MainMenu.setIsLearningLevel(false);
             MainMenu m = new MainMenu(this);
             m.run();
         }
         if(MainMenu.getIsMazeIntro()){
-            System.out.println("2");
             MainMenu.setIsMazeIntro(false);
             ClassMaze c = new ClassMaze(this);
             c.run();
@@ -163,7 +163,6 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         }
         // LOCK GAME
         if (e.getKeyChar() == 'w' && MainMenu.getIsLock()&&!Lock.checkWinner()) {
-            System.out.println(MainMenu.getIsCongrats());
             if (Lock.degrees == 360)
                 Lock.degrees = 45;
             else
@@ -651,6 +650,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         double yy = q.getY();
         System.out.println("X: " + xx + "   Y: "+ yy);
         if (MainMenu.getIsMeetPerson()) {
+            MainMenu.setIsMainMenu(false);
             Point p = MouseInfo.getPointerInfo().getLocation();
             SwingUtilities.convertPointFromScreen(p, e.getComponent());
             double x = p.getX();

@@ -50,15 +50,19 @@ public class MazeIntro {
         public void paint(Graphics g) {
             super.paintComponent(g);
             // BACKGROUND
-            g.setColor(Colours.backgroundBlue);
+            g.setColor(Colours.darkerBlue);
             g.fillRect(0, 0, getWidth(), getHeight());
+            g.setColor(Colours.backgroundBlue);
+            g.fillRect(20, 20, getWidth()-40, getHeight()-40);
             // NUMBERS
             g.setColor(Color.WHITE);
-            g.setFont(new Font("Roboto", Font.PLAIN, 30));
-            g.drawString("Welcome to the maze level.", 100, 130);   
+            g.setFont(Colours.title);
+            g.drawString("Welcome to the maze level", 100, 90);   
+            g.setFont(new Font("Roboto", Font.PLAIN, 25));
             g.drawString("Use 'W', 'A', 'S', 'D' to move yourself arround", 100, 170);
-            g.drawString("Make it to the end of the maze by overcoming obstacles you see along the way", 100, 170+40);
-            g.drawString("Press any key to start, Good luck!", 100, 170+80);
+            g.drawString("Complete the maze by overcoming obstacles you ", 100, 170+40+10);
+            g.drawString("see along the way", 100, 170+40+30+10);
+            g.drawString("Press any key to start, Good luck!", 100, 170+80+50);
         }
     }
 }
