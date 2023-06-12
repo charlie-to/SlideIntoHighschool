@@ -2,10 +2,10 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class MazeIntro {
+public class EscapeIntro {
 
 /**
- * MazeIntro class of Slide Into Highschool, shows intro message for maze level
+ * EscapeIntro class of Slide Into Highschool, shows intro message for escape level
  *
  * <h2>Course Info:</h2>
  * ICS4UP with Krasteva, V.
@@ -17,8 +17,8 @@ public class MazeIntro {
  
     /** Holds the frame*/
     JFrame frame;
-    public MazeIntro(JFrame frame, String text){
-        MainMenu.setIsMazeIntro(true);
+    public EscapeIntro(JFrame frame, String text){
+        MainMenu.setIsEscapeIntro(true);
         this.frame = frame;
         // Clear the frame
         Container contentPane = frame.getContentPane();
@@ -33,14 +33,14 @@ public class MazeIntro {
      * @param frame, text, text2, takes frames and texts to display
      * @return name Function
      */
-    public MazeIntro(JFrame frame){
+    public EscapeIntro(JFrame frame){
         this.frame = frame;
         // Clear the frame
         Container contentPane = frame.getContentPane();
         contentPane.removeAll();
         this.frame.revalidate();
         this.frame.repaint();
-        MainMenu.setIsMazeIntro(true);
+        MainMenu.setIsEscapeIntro(true);
     }
     public void run(){
         frame.getContentPane().add(new Drawing());
@@ -57,11 +57,11 @@ public class MazeIntro {
             // NUMBERS
             g.setColor(Color.WHITE);
             g.setFont(Colours.title);
-            g.drawString("Welcome to the maze level", 100, 90);   
+            g.drawString("Welcome to the escape level!", 100, 90);   
             g.setFont(new Font("Roboto", Font.PLAIN, 25));
             g.drawString("Use 'W', 'A', 'S', 'D' to move yourself arround", 100, 170);
-            g.drawString("Complete the maze by overcoming obstacles you ", 100, 170+40+10);
-            g.drawString("see along the way", 100, 170+40+30+10);
+            g.drawString("Move around the school and complete the activities", 100, 170+40+10);
+            g.drawString("The rooms that are green have activities in them", 100, 170+40+30+10);
             g.drawString("Press any key to start, Good luck!", 100, 170+80+50);
         }
     }

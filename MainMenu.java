@@ -36,6 +36,7 @@ public class MainMenu{
     private static boolean isKickBall;
 
     private static boolean isMazeIntro;
+    private static boolean isEscapeIntro;
     
     
     
@@ -59,7 +60,7 @@ public class MainMenu{
 
     class Drawing extends JComponent {
         public void paint(Graphics g) {
-             super.paintComponent(g);
+            super.paintComponent(g);
             // BACKGROUND
             g.setColor(Colours.darkerBlue);
             g.fillRect(0, 0, getWidth(), getHeight());
@@ -390,5 +391,22 @@ public class MainMenu{
      */
     public static void setIsMazeIntro(boolean onMazeIntro){
         isMazeIntro = onMazeIntro;
+    }
+
+    /**
+     * getIsMazeIntro method, function
+     *
+     * @return boolean, whether the game is running corresponding class currently
+     */
+    public static boolean getIsEscapeIntro(){
+        return isEscapeIntro;
+    }
+    /**
+     * getIsMazeIntro method, function
+     *
+     * @param onMazeIntro Sets if game is running corresponding class currently
+     */
+    public static void setIsEscapeIntro(boolean onEscapeIntro){
+        isEscapeIntro = onEscapeIntro;
     }
 }

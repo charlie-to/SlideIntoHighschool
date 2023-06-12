@@ -145,6 +145,11 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             ClassMaze c = new ClassMaze(this);
             c.run();
         }
+        if(MainMenu.getIsEscapeIntro()){
+            MainMenu.setIsEscapeIntro(false);
+            EscapeMap c = new EscapeMap(this);
+            c.run();
+        }
         if (Congrats.cur.equals("MeetThePerson")){
             resetMinigameVars();
             MainMenu.setIsCongrats(false);
@@ -333,12 +338,12 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                 m.run();
             }
             if (e.getKeyChar() == 'a' && MainMenu.getIsEscapeMap()) {
-                if (EscapeMap.yPos < 270 && EscapeMap.xPos > 93){
+                if (EscapeMap.yPos < 280 && EscapeMap.xPos > 93){
                     EscapeMap.xPos -= moveAmt;
                     EscapeMap m = new EscapeMap(this);
                     m.run();
                 }
-                if (EscapeMap.yPos >270 && EscapeMap.xPos > 327){
+                if (EscapeMap.yPos >280 && EscapeMap.xPos > 327){
                     EscapeMap.xPos -= moveAmt;
                     EscapeMap m = new EscapeMap(this);
                     m.run();
@@ -434,8 +439,10 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             }
             if ((x > 260 && x < 527) && (y > 300 && y < 350)){
                 MainMenu.setIsMainMenu(false);
-                EscapeMap c = new EscapeMap(this);
+                EscapeIntro c = new EscapeIntro(this);
                 c.run();
+                // EscapeMap c = new EscapeMap(this);
+                // c.run();
             }
             if ((x > 260 && x < 527) && (y > 370 && y < 420)){
                 System.out.println("goodbye");
@@ -531,10 +538,6 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             }
         }
         
-        // Maze level
-        if (MainMenu.getIsCongrats() && MainMenu.getIsMeetPerson()){
-            System.out.println("hiiiii");
-        }
         // MAZE MAP
         if (MainMenu.getIsMap()) {
             x = p.getX();
