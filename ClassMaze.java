@@ -211,7 +211,6 @@ public class ClassMaze {
             g.setFont(new Font("Roboto", Font.PLAIN, 25));
             g.setFont(new Font("Roboto", Font.BOLD, 40));
             g.drawString("MAZE LEVEL", 270, 80);
-
         }
     }
 }
