@@ -19,6 +19,7 @@ public class Congrats {
     JFrame frame;
     /** Holds the text for congratulations screen*/
     String text;
+    public static String cur = "";
     /** Holds the text for congratulations screen*/
     String text2 = "press space to continue";
     public Congrats(JFrame frame, String text){

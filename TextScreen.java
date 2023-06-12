@@ -72,6 +72,18 @@ public class TextScreen {
                 g.drawString("2. Place the missing rooms in their correct location", 100, a+l*2);
                 g.drawString("Press 'n' when you are ready to start", 230, 10+a+l*7);
             }
+            if (cur.equals("MeetThePerson")){
+                g.setFont(new Font("Roboto", Font.PLAIN, 24));
+                g.drawString("You will have be given common conversation questions", 100, 20+a);
+                g.drawString("Choose the answer that will help you make friends", 100, 20+a+l);
+                g.setFont(new Font("Roboto", Font.PLAIN, 20));
+                g.drawString("Press 'n' when you are ready to start", 230, 10+a+l*7);
+            }
+            if (cur.equals("Try again")){
+                g.setFont(new Font("Roboto", Font.PLAIN, 24));
+                g.drawString("Some of your answers were incorrect", 100, 20+a);
+                g.drawString("Press any key when you are ready to try again", 100, 20+a+l);
+            }
         }
     }
 }

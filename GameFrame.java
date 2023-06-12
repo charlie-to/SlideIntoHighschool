@@ -96,6 +96,16 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         LibraryGame.y2 = 0;
         LibraryGame.books = new boolean[6];
         LibraryGame.isComplete = false;
+        // MEET THE PERSON
+        MeetThePerson.x=0;
+        MeetThePerson.y = 0;
+        MeetThePerson.xPos = 0;
+        MeetThePerson.yPos =0;
+        MeetThePerson.score = 0;
+        MeetThePerson.stage =1;
+        MeetThePerson.hover1 = false;
+        MeetThePerson.hover2 = false;
+        MeetThePerson.isComplete = false;
     }
 
    /**
@@ -133,8 +143,26 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         }
         if(MainMenu.getIsMazeIntro()){
             MainMenu.setIsMazeIntro(false);
+            // ClassMaze.move("left");
+
+            // try{
+            //     Robot r = new Robot();
+            //     r.keyPress(KeyEvent.VK_A);
+            // }catch (Exception s){System.out.println("robot error");}
             ClassMaze c = new ClassMaze(this);
+            // ClassMaze.move("left");
             c.run();
+            // ClassMaze.move("left");
+
+        }
+        if (Congrats.cur.equals("MeetThePerson")){
+            resetMinigameVars();
+            MainMenu.setIsCongrats(false);
+            MainMenu.setIsMeetPerson(false);
+            Congrats.cur = "";
+            ClassMaze.move("left");
+            ClassMaze m = new ClassMaze(this);
+            m.run();
         }
         if (MainMenu.getIsCongrats() && EscapeMap.isHallComplete && EscapeMap.isTakeNotesComplete
                 && EscapeMap.isTalkToTeacherComplete && EscapeMap.isKickBallComplete
@@ -296,11 +324,11 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         // m.run();
         // }
         // }
-        else if (!MeetThePerson.isComplete && MainMenu.getIsMeetPerson() && MainMenu.getIsMazeGame()) {
-            System.out.println("1.1");
-            MeetThePerson p = new MeetThePerson(this);
-            p.run();
-        }
+        // else if (!MeetThePerson.isComplete && MainMenu.getIsMeetPerson() && MainMenu.getIsMazeGame()) {
+        //     System.out.println("1.1");
+        //     MeetThePerson p = new MeetThePerson(this);
+        //     p.run();
+        // }
         // }
         else if (ClassMaze.checkMeetGame() && MainMenu.getIsMazeGame()) {
             if (e.getKeyChar() == 'n' && !MainMenu.getIsMeetPerson()) {
@@ -309,6 +337,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                 MeetThePerson p = new MeetThePerson(this);
                 p.run();
             } else {
+                TextScreen.cur = "MeetThePerson";
                 TextScreen t = new TextScreen(this, "Obstacle #3: Meet the Person");
                 t.run();
             }
@@ -361,7 +390,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         }
 
         // HALLWAY GAME
-        if (!HallwayGame.checkWin() && HallwayGame.items.size() == 4) {
+        if (!HallwayGame.checkWin() && HallwayGame.items.size() == 4 && MainMenu.getIsHallwayGame()) {
             resetMinigameVars();
             HallwayGame h = new HallwayGame(this);
             h.run();
@@ -521,6 +550,10 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             }
         }
         
+        // Maze level
+        if (MainMenu.getIsCongrats() && MainMenu.getIsMeetPerson()){
+            System.out.println("hiiiii");
+        }
         // MAZE MAP
         if (MainMenu.getIsMap()) {
             x = p.getX();
@@ -657,11 +690,10 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             double y = p.getY() - 25;
             System.out.println("STAGE: " + MeetThePerson.stage);
             if (x > 350 && x < 500 && y > 350 && y < 425) {
-                System.out.println("1 clicked");
                 if (MeetThePerson.stage == 1 || MeetThePerson.stage == 2) {
                     MeetThePerson.score++;
-                    MeetThePerson.stage++;
                 }
+                MeetThePerson.stage++;
                 MeetThePerson.hover1 = true;
             } else {
                 MeetThePerson.hover1 = false;
@@ -671,45 +703,35 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                 System.out.println("2 clicked");
                 if (MeetThePerson.stage == 3) {
                     MeetThePerson.score++;
-                    MeetThePerson.stage++;
                     MainMenu.setIsMeetPerson(false);
                     MeetThePerson.isComplete = true;
                 }
+                MeetThePerson.stage++;
                 MeetThePerson.hover2 = true;
             } else {
                 MeetThePerson.hover2 = false;
             }
-            if (MeetThePerson.stage == 3) {
+            if (MeetThePerson.stage == 4) {
                 if (MeetThePerson.score == 3) {
-                    MainMenu.setIsMeetPerson(false);
+                    // MainMenu.setIsMeetPerson(false);
                     MeetThePerson.isComplete = true;
-
-                    // ClassMaze m = new ClassMaze(this);
-                    // m.run();
+                    Congrats.cur= "MeetThePerson";
+                    Congrats c = new Congrats(this, "you have completed the meet the person game", "Press any key to continue");
+                    c.run();
                 }
-                if (MeetThePerson.score < 3) {
-                    // resetMinigameVars();
-                    // MeetThePerson.stage = 1;
-                    // MeetThePerson.score=0;
-                    // System.out.println("hi");
-                    // MainMenu.setIsMeetPerson(true);
-                    // MainMenu.setIsTextScreen(false);
-                    // MeetThePerson m = new MeetThePerson(this);
-                    // m.run();
-
-                //     // MeetThePerson m = new MeetThePerson(this);
-                //     // m.run();
+                else if (MeetThePerson.score < 3) {
+                    resetMinigameVars();
+                    System.out.println("hi");
+                    TextScreen.cur = "Try again";
+                    TextScreen t = new TextScreen(this, "Try again");
+                    t.run();
                 }
                 System.out.println("Meet the person done: " + MeetThePerson.score);
             }
-            try {
-                Robot robot = new Robot();
-                robot.keyPress(KeyEvent.VK_A);
-            } catch (Exception d) {
-                System.out.println("robot error");
+            else{
+                MeetThePerson d = new MeetThePerson(this);
+                d.run();
             }
-            // MeetThePerson m = new MeetThePerson(this);
-            // m.run();
         }
         // TALK TO TEACHER GAME
         if (MainMenu.getIsTalkToTeacher()) {
@@ -791,26 +813,26 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             System.out.println("X: " + x + "        Y: " + y);
         }
         // MEET THE PERSON
-        if (MainMenu.getIsMeetPerson()) {
-            Point p = MouseInfo.getPointerInfo().getLocation();
-            SwingUtilities.convertPointFromScreen(p, e.getComponent());
-            double x = p.getX();
-            double y = p.getY() - 25;
+        // if (MainMenu.getIsMeetPerson()) {
+        //     Point p = MouseInfo.getPointerInfo().getLocation();
+        //     SwingUtilities.convertPointFromScreen(p, e.getComponent());
+        //     double x = p.getX();
+        //     double y = p.getY() - 25;
 
-            // if (x > 350 && x < 500 && y > 350 && y < 425) {
-            //     MeetThePerson.stage++;
-            // } else if (x > 550 && x < 700 && y > 350 && y < 425) {
-            //     MeetThePerson.stage++;
-            // }
-            try {
-                Robot robot = new Robot();
-                robot.keyPress(KeyEvent.VK_M);
-            } catch (Exception d) {
-                System.out.println("robot error");
-            }
-            // MeetThePerson m = new MeetThePerson(this);
-            // m.run();
-        }
+        //     // if (x > 350 && x < 500 && y > 350 && y < 425) {
+        //     //     MeetThePerson.stage++;
+        //     // } else if (x > 550 && x < 700 && y > 350 && y < 425) {
+        //     //     MeetThePerson.stage++;
+        //     // }
+        //     try {
+        //         Robot robot = new Robot();
+        //         robot.keyPress(KeyEvent.VK_M);
+        //     } catch (Exception d) {
+        //         System.out.println("robot error");
+        //     }
+        //     // MeetThePerson m = new MeetThePerson(this);
+        //     // m.run();
+        // }
 
         // TAKE NOTES
         if (MainMenu.getIsTakeNotes()) {

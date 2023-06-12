@@ -60,7 +60,6 @@ public class ClassMaze {
      * @param frame takes JFrame
      */
     public ClassMaze(JFrame frame) {
-        System.out.println("hi");
         this.frame = frame;
         // Clear the frame
         Container contentPane = frame.getContentPane();
