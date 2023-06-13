@@ -63,11 +63,13 @@ public class HallwayGame {
         public void paint(Graphics g) {
             super.paintComponent(g);
             // BACKGROUND
-            g.setColor(Colours.backgroundBlue);
+            g.setColor(Colours.darkerBlue);
             g.fillRect(0, 0, getWidth(), getHeight());
+            g.setColor(Colours.backgroundBlue);
+            g.fillRect(20, 20, getWidth()-40, getHeight()-40);
             g.setColor(Color.WHITE);
-            g.setFont(Colours.mediumSerifFont);
-            g.drawString("Get 4 items you'll need for class", 100, 50);
+            g.setFont(Colours.title2);
+            g.drawString("Select 4 items you'll need for class", 120, 70);
             g.setColor(Color.GRAY);
             g.fillRect(180, 330, 440, 140);
             // DRAW SELECTED ITEMS
@@ -135,9 +137,12 @@ public class HallwayGame {
                 g.setColor(Color.GRAY);
                 g.fillRect(180, 330, 440, 140);
                 g.setColor(Color.WHITE);
-                g.drawString("Those are the incorrect items", 200, 400);
-                g.drawString("press any key to try again", 200, 450);
+                g.setFont(Colours.small);
+                g.drawString("Those are the incorrect items", 200, 370);
+                g.drawString("press any key to try again", 200, 400);
             }
+            g.setColor(Colours.darkerBlue);
+            g.fillRect(0, getHeight()-20, getWidth(), 20);
         }
     }
 }

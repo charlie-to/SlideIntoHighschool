@@ -134,6 +134,9 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
      */
     @Override
     public void keyTyped(KeyEvent e) {
+        if (MainMenu.getIsGoodbye()){
+            System.exit(0);
+        }
         if (MainMenu.getIsCongratsMenu()){
             MainMenu.setIsCongratsMenu(false);
             MainMenu.setIsLearningLevel(false);
@@ -178,12 +181,12 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             MainMenu m = new MainMenu(this);
             m.run();
         }
-        // INSTRUCTIONS
-        if (e.getKeyChar() == 'e' && MainMenu.getIsInstruction() && !MainMenu.getIsCongrats()) {
-            resetMinigameVars();
-            MainMenu ex = new MainMenu(this);
-            ex.run();
-        }
+        // // INSTRUCTIONS
+        // if (e.getKeyChar() == 'e' && MainMenu.getIsInstruction() && !MainMenu.getIsCongrats()) {
+        //     resetMinigameVars();
+        //     MainMenu ex = new MainMenu(this);
+        //     ex.run();
+        // }
         // LOCK GAME
         if (e.getKeyChar() == 'w' && MainMenu.getIsLock()&&!Lock.checkWinner()) {
             if (Lock.degrees == 360)
@@ -205,28 +208,29 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
         }
         // MAZE
         if (e.getKeyChar() == 'w' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen() && !MainMenu.getIsCongrats()&& !MainMenu.getIsLock()
-                && !MainMenu.getIsMap()) {
+                && !MainMenu.getIsMap()&&!MainMenu.getIsMeetPerson()) {
+
             resetMinigameVars();
             ClassMaze.move("up");
             ClassMaze cm = new ClassMaze(this);
             cm.run();
         }
         if (e.getKeyChar() == 's' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen()&& !MainMenu.getIsCongrats() && !MainMenu.getIsLock()
-                && !MainMenu.getIsMap()) {
+                && !MainMenu.getIsMap()&&!MainMenu.getIsMeetPerson()) {
             resetMinigameVars();
             ClassMaze.move("down");
             ClassMaze cm = new ClassMaze(this);
             cm.run();
         }
         if (e.getKeyChar() == 'a' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen() && !MainMenu.getIsCongrats()&& !MainMenu.getIsLock()
-                && !MainMenu.getIsMap()) {
+                && !MainMenu.getIsMap()&& !MainMenu.getIsMeetPerson()) {
             resetMinigameVars();
             ClassMaze.move("left");
             ClassMaze cm = new ClassMaze(this);
             cm.run();
         }
         if (e.getKeyChar() == 'd' && MainMenu.getIsMazeGame() && !MainMenu.getIsTextScreen() && !MainMenu.getIsCongrats()&& !MainMenu.getIsLock()
-                && !MainMenu.getIsMap()) {
+                && !MainMenu.getIsMap()&&!MainMenu.getIsMeetPerson()) {
             resetMinigameVars();
             ClassMaze.move("right");
             ClassMaze cm = new ClassMaze(this);
@@ -445,8 +449,8 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                 // c.run();
             }
             if ((x > 260 && x < 527) && (y > 370 && y < 420)){
-                System.out.println("goodbye");
-                System.exit(0);
+                Goodbye g = new Goodbye(this);
+                g.run();
             }
         }
         // LEARNING LEVELS
@@ -646,7 +650,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                 EscapeMap m = new EscapeMap(this);
                 m.run();
             } else {
-                System.out.println(HallwayGame.items);
+                // System.out.println(HallwayGame.items);
                 HallwayGame h = new HallwayGame(this);
                 h.run();
             }
@@ -661,11 +665,11 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
 
-        Point q = MouseInfo.getPointerInfo().getLocation();
-        SwingUtilities.convertPointFromScreen(q, e.getComponent());
-        double xx = q.getX();
-        double yy = q.getY();
-        System.out.println("X: " + xx + "   Y: "+ yy);
+        // Point q = MouseInfo.getPointerInfo().getLocation();
+        // SwingUtilities.convertPointFromScreen(q, e.getComponent());
+        // double xx = q.getX();
+        // double yy = q.getY();
+        // System.out.println("X: " + xx + "   Y: "+ yy);
         if (MainMenu.getIsMeetPerson()) {
             MainMenu.setIsMainMenu(false);
             Point p = MouseInfo.getPointerInfo().getLocation();

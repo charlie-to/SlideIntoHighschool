@@ -22,11 +22,11 @@ public class Driver {
         public static void main(String[] args) {
             frame = new GameFrame("Slide Into Highschool");
             frame.setSize(800, 500);
-            // new Splash(frame);
-            // try {
-            //     Thread.sleep(6000);
-            // } catch (Exception e) {
-            // }
+            new Splash(frame);
+            try {
+                Thread.sleep(6000);
+            } catch (Exception e) {
+            }
             MainMenu m = new MainMenu(frame);
             m.run();
             // LibraryGame l = new LibraryGame(frame);

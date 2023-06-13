@@ -38,9 +38,8 @@ public class MainMenu{
     private static boolean isMazeIntro;
     private static boolean isEscapeIntro;
     
+    private static boolean isGoodbye;    
     
-    
-     
    /**
      * Constructor method
      *
@@ -80,6 +79,7 @@ public class MainMenu{
             g.drawString("Level 2: MAZE", 290, 163+70);
             g.drawString("Level 3: ESCAPE", 290, 163+70+70);
             g.drawString("EXIT", 355, 163+70+70+70);
+            
         }
     }
     public void run(){           
@@ -408,5 +408,24 @@ public class MainMenu{
      */
     public static void setIsEscapeIntro(boolean onEscapeIntro){
         isEscapeIntro = onEscapeIntro;
+    }
+
+    /**
+     * getIsGoodbye method, function
+     *
+     * @return boolean, whether the game is running corresponding class currently
+     */
+    public static boolean getIsGoodbye(){
+        return isGoodbye;
+    }
+    
+    /**
+     * setIsGoodbye method, function
+     *
+     * @param onGoodbye Sets if game is running corresponding class currently
+     */
+    public static void setIsGoodbye(boolean onGoodbye)
+    {
+        isGoodbye = onGoodbye;
     }
 }

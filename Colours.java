@@ -20,6 +20,8 @@ public class Colours {
     /** large font */
     public static Font largeSerifFont = new Font("Serif", Font.BOLD, 50);
     public static Font title = new Font ("Roboto", Font.BOLD, 40);
+    public static Font title2 = new Font ("Roboto", Font.BOLD, 35);
     /** medium font */
+    public static Font small = new Font ("Roboto", Font.PLAIN, 20);
     public static Font mediumSerifFont = new Font("Serif", Font.BOLD, 35);
 }

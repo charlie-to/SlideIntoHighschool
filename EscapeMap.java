@@ -127,7 +127,7 @@ public class EscapeMap {
             }
             g.setColor(Color.WHITE);
             g.setFont(Colours.title);
-            g.drawString("Escape Level: Survie a School Day", 90, 40);
+            g.drawString("Escape Level: Survive a School Day", 90, 40);
         }
     }
 }
