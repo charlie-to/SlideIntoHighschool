@@ -687,7 +687,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             }
 
             if (x > 550 && x < 700 && y > 350 && y < 425) {
-                System.out.println("2 clicked");
+                // System.out.println("2 clicked");
                 if (MeetThePerson.stage == 3) {
                     MeetThePerson.score++;
                     MainMenu.setIsMeetPerson(false);
@@ -708,7 +708,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                 }
                 else if (MeetThePerson.score < 3) {
                     resetMinigameVars();
-                    System.out.println("hi");
+                    // System.out.println("hi");
                     TextScreen.cur = "Try again";
                     TextScreen t = new TextScreen(this, "Try again");
                     t.run();
@@ -790,7 +790,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             SwingUtilities.convertPointFromScreen(p, e.getComponent());
             double x = p.getX();
             double y = p.getY();
-            System.out.println("X: " + x + "        Y: " + y);
+            // System.out.println("X: " + x + "        Y: " + y);
         }
 
         // TAKE NOTES
@@ -803,7 +803,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
             double y = p.getY() - 25;
 
             if (MainMenu.getIsTakeNotes()) {
-                System.out.println("123");
+                // System.out.println("123");
                 TakeNotes m = new TakeNotes(this);
                 m.run();
             }
@@ -819,7 +819,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                 TakeNotes.stage++;
             }
             if (TakeNotes.stage == 6) {
-                System.out.println("Take notes complete");
+                // System.out.println("Take notes complete");
                 MainMenu.setIsTakeNotes(false);
                 if (TakeNotes.win) {
                     EscapeMap.isTakeNotesComplete = true;
@@ -896,7 +896,7 @@ public class GameFrame extends JFrame implements KeyListener, MouseListener {
                 MainMenu.setIsLibraryGame(false);
                 EscapeMap l = new EscapeMap(this);
                 l.run();
-                System.out.println("dfskhaf");
+                // System.out.println("dfskhaf");
             } else {
                 LibraryGame m = new LibraryGame(this);
                 m.run();
